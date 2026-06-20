@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fläche des Quadrats</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+  <div class="page">
+    <nav class="breadcrumb">
+      <a href="../index.html">Startseite</a>
+      <span>›</span>
+      <a href="index.html">Vierecke</a>
+      <span>›</span>
+      Quadrat
+    </nav>
+
+    <header class="hero compact">
+      <p class="eyebrow">Vierecke · Flächenberechnung</p>
+      <h1>Quadrat</h1>
+      <p class="subtitle">
+        Beim Quadrat sind alle Seiten gleich lang. Die Fläche berechnet man,
+        indem man zählt, wie viele Quadrateinheiten hineinpassen.
+      </p>
+    </header>
+
+    <main class="parallelogramm-layout">
+      <!-- Oben: Idee der Berechnung -->
+      <section class="panel animation-panel">
+        <div class="section-heading">
+          <h2>Idee der Berechnung</h2>
+          <p>
+            Wir teilen das Quadrat in kleine Grundeinheiten von 1 cm² ein.
+            Danach zählen wir Einheitsquadrate in einer Zeile und die Anzahl der Zeilen.
+          </p>
+        </div>
+
+        <div class="area-animation-layout">
+          <div class="area-animation-stage">
+            <svg id="animationSvg" class="geometry-svg" viewBox="0 0 760 380" role="img" aria-label="Animation zur Flächenberechnung eines Quadrats">
+              <!-- Quadrat -->
+              <rect id="squareBase" x="230" y="80" width="230" height="230" rx="4" class="shape-fill"></rect>
+
+              <!-- Vollständige 5x5-Zerlegung -->
+              <g id="squareGrid" class="hidden">
+                <line x1="276" y1="80" x2="276" y2="310" stroke="#94a3b8" stroke-width="2"></line>
+                <line x1="322" y1="80" x2="322" y2="310" stroke="#94a3b8" stroke-width="2"></line>
+                <line x1="368" y1="80" x2="368" y2="310" stroke="#94a3b8" stroke-width="2"></line>
+                <line x1="414" y1="80" x2="414" y2="310" stroke="#94a3b8" stroke-width="2"></line>
+
+                <line x1="230" y1="126" x2="460" y2="126" stroke="#94a3b8" stroke-width="2"></line>
+                <line x1="230" y1="172" x2="460" y2="172" stroke="#94a3b8" stroke-width="2"></line>
+                <line x1="230" y1="218" x2="460" y2="218" stroke="#94a3b8" stroke-width="2"></line>
+                <line x1="230" y1="264" x2="460" y2="264" stroke="#94a3b8" stroke-width="2"></line>
+              </g>
+
+              <!-- Ein einzelnes Einheitsquadrat mit Beschriftung rechts daneben -->
+              <g id="unitSquare" class="hidden">
+                <rect x="510" y="126" width="46" height="46" fill="#dbeafe" stroke="#1f2937" stroke-width="3"></rect>
+                <text x="575" y="157" class="svg-label unit-label">1 cm²</text>
+              </g>
+
+              <!-- Schritt 3: fünf Einheitsquadrate in einer vollständigen Zeile -->
+              <g id="rowSquares" class="hidden">
+                <rect x="230" y="80" width="46" height="46" fill="rgba(37, 99, 235, 0.22)" stroke="#2563eb" stroke-width="3"></rect>
+                <rect x="276" y="80" width="46" height="46" fill="rgba(37, 99, 235, 0.22)" stroke="#2563eb" stroke-width="3"></rect>
+                <rect x="322" y="80" width="46" height="46" fill="rgba(37, 99, 235, 0.22)" stroke="#2563eb" stroke-width="3"></rect>
+                <rect x="368" y="80" width="46" height="46" fill="rgba(37, 99, 235, 0.22)" stroke="#2563eb" stroke-width="3"></rect>
+                <rect x="414" y="80" width="46" height="46" fill="rgba(37, 99, 235, 0.22)" stroke="#2563eb" stroke-width="3"></rect>
+              </g>
+
+              <!-- Schritt 4: Die restlichen vier Zeilen werden rot als Einheitsquadrate eingezeichnet -->
+              <g id="remainingRows" class="hidden">
+                <!-- 2. Zeile -->
+                <rect x="230" y="126" width="46" height="46" fill="rgba(239, 68, 68, 0.16)" stroke="#ef4444" stroke-width="3"></rect>
+                <rect x="276" y="126" width="46" height="46" fill="rgba(239, 68, 68, 0.16)" stroke="#ef4444" stroke-width="3"></rect>
+                <rect x="322" y="126" width="46" height="46" fill="rgba(239, 68, 68, 0.16)" stroke="#ef4444" stroke-width="3"></rect>
+                <rect x="368" y="126" width="46" height="46" fill="rgba(239, 68, 68, 0.16)" stroke="#ef4444" stroke-width="3"></rect>
+                <rect x="414" y="126" width="46" height="46" fill="rgba(239, 68, 68, 0.16)" stroke="#ef4444" stroke-width="3"></rect>
+
+                <!-- 3. Zeile -->
+                <rect x="230" y="172" width="46" height="46" fill="rgba(239, 68, 68, 0.16)" stroke="#ef4444" stroke-width="3"></rect>
+                <rect x="276" y="172" width="46" height="46" fill="rgba(239, 68, 68, 0.16)" stroke="#ef4444" stroke-width="3"></rect>
+                <rect x="322" y="172" width="46" height="46" fill="rgba(239, 68, 68, 0.16)" stroke="#ef4444" stroke-width="3"></rect>
+                <rect x="368" y="172" width="46" height="46" fill="rgba(239, 68, 68, 0.16)" stroke="#ef4444" stroke-width="3"></rect>
+                <rect x="414" y="172" width="46" height="46" fill="rgba(239, 68, 68, 0.16)" stroke="#ef4444" stroke-width="3"></rect>
+
+                <!-- 4. Zeile -->
+                <rect x="230" y="218" width="46" height="46" fill="rgba(239, 68, 68, 0.16)" stroke="#ef4444" stroke-width="3"></rect>
+                <rect x="276" y="218" width="46" height="46" fill="rgba(239, 68, 68, 0.16)" stroke="#ef4444" stroke-width="3"></rect>
+                <rect x="322" y="218" width="46" height="46" fill="rgba(239, 68, 68, 0.16)" stroke="#ef4444" stroke-width="3"></rect>
+                <rect x="368" y="218" width="46" height="46" fill="rgba(239, 68, 68, 0.16)" stroke="#ef4444" stroke-width="3"></rect>
+                <rect x="414" y="218" width="46" height="46" fill="rgba(239, 68, 68, 0.16)" stroke="#ef4444" stroke-width="3"></rect>
+
+                <!-- 5. Zeile -->
+                <rect x="230" y="264" width="46" height="46" fill="rgba(239, 68, 68, 0.16)" stroke="#ef4444" stroke-width="3"></rect>
+                <rect x="276" y="264" width="46" height="46" fill="rgba(239, 68, 68, 0.16)" stroke="#ef4444" stroke-width="3"></rect>
+                <rect x="322" y="264" width="46" height="46" fill="rgba(239, 68, 68, 0.16)" stroke="#ef4444" stroke-width="3"></rect>
+                <rect x="368" y="264" width="46" height="46" fill="rgba(239, 68, 68, 0.16)" stroke="#ef4444" stroke-width="3"></rect>
+                <rect x="414" y="264" width="46" height="46" fill="rgba(239, 68, 68, 0.16)" stroke="#ef4444" stroke-width="3"></rect>
+              </g>
+
+              <!-- Seitenbeschriftungen -->
+              <line x1="230" y1="332" x2="460" y2="332" class="measure-line"></line>
+              <text x="338" y="365" class="svg-label">a</text>
+
+              <line x1="488" y1="80" x2="488" y2="310" class="measure-line"></line>
+              <text x="510" y="202" class="svg-label">a</text>
+            </svg>
+          </div>
+
+          <aside class="area-animation-step" aria-live="polite">
+            <h3 id="stepTitle">Schritt 1</h3>
+            <p id="stepDescription">
+              Wir betrachten zunächst das Quadrat. Alle Seiten sind gleich lang.
+            </p>
+          </aside>
+        </div>
+
+        <div class="button-row">
+          <button id="prevStep" class="secondary-button">Zurück</button>
+          <button id="nextStep" class="primary-button">Nächster Schritt</button>
+          <button id="resetAnimation" class="secondary-button">Neu starten</button>
+        </div>
+      </section>
+
+      <!-- Darunter: Skizze und Berechnung gleich groß nebeneinander -->
+      <section class="panel sketch-calc-panel">
+        <div class="section-heading">
+          <h2>Skizze und Berechnung</h2>
+          <p>
+            Links siehst du die wichtige Seitenlänge. Rechts kannst du die Seitenlänge eingeben.
+          </p>
+        </div>
+
+        <div class="sketch-calc-grid equal-columns">
+          <div class="mini-sketch-box equal-box">
+            <h3>Skizze der Fläche</h3>
+
+            <svg class="mini-sketch" viewBox="0 0 360 230" aria-label="Skizze eines Quadrats mit Seitenlänge a">
+              <rect x="95" y="35" width="140" height="140" rx="4" class="shape-fill"></rect>
+
+              <line x1="95" y1="198" x2="235" y2="198" class="measure-line"></line>
+              <text x="160" y="222" class="svg-label">a</text>
+
+              <line x1="258" y1="35" x2="258" y2="175" class="measure-line"></line>
+              <text x="280" y="112" class="svg-label">a</text>
+            </svg>
+
+            <div class="formula-box">A = a · a</div>
+          </div>
+
+          <form class="calc-box equal-box" id="calcForm">
+            <h3>Berechnung</h3>
+
+            <label for="seitenlaenge">Seitenlänge a</label>
+            <div class="input-line">
+              <input id="seitenlaenge" type="number" min="0" step="0.1" value="5">
+              <span>cm</span>
+            </div>
+
+            <button class="primary-button" type="submit">Fläche berechnen</button>
+
+            <output id="result" class="result-box" aria-live="polite"></output>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="../assets/js/quadrat.js"></script>
+</body>
+</html>

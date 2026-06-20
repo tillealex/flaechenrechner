@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fläche des Parallelogramms</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <div class="page">
+    <nav class="breadcrumb">
+      <a href="../index.html">Startseite</a>
+      <span>›</span>
+      <a href="index.html">Vierecke</a>
+      <span>›</span>
+      Parallelogramm
+    </nav>
+
+    <header class="hero compact">
+      <p class="eyebrow">Vierecke · Flächenberechnung</p>
+      <h1>Parallelogramm</h1>
+      <p class="subtitle">
+        Die Fläche eines Parallelogramms berechnet man wie die Fläche eines Rechtecks:
+        Grundseite mal Höhe.
+      </p>
+    </header>
+
+    <main class="parallelogramm-layout">
+      <!-- Oben: Idee der Berechnung -->
+      <section class="panel animation-panel">
+        <div class="section-heading">
+          <h2>Idee der Berechnung</h2>
+          <p>
+            Wir schneiden links ein rechtwinkliges Dreieck ab und fügen es rechts wieder an.
+            So entsteht ein Rechteck mit gleicher Fläche.
+          </p>
+        </div>
+
+        <div class="area-animation-layout">
+          <div class="area-animation-stage">
+            <svg id="animationSvg" class="geometry-svg" viewBox="0 0 760 360" role="img" aria-label="Animation zur Umformung eines Parallelogramms in ein Rechteck">
+              <defs>
+                <pattern id="redHatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)">
+                  <rect x="0" y="0" width="10" height="10" fill="#fee2e2"></rect>
+                  <line x1="0" y1="0" x2="0" y2="10" class="hatch-line"></line>
+                </pattern>
+              </defs>
+
+              <!-- Ausgangsfläche beziehungsweise Restfläche -->
+              <polygon id="mainShape" points="170,85 550,85 640,260 260,260" class="shape-fill"></polygon>
+
+              <!-- Linkes rechtwinkliges Dreieck: wird in Schritt 3 markiert -->
+              <polygon id="cutTriangle" points="170,85 260,85 260,260" class="cut-fill hidden"></polygon>
+
+              <!-- Dasselbe Dreieck rechts angefügt: Schritt 4 -->
+              <polygon id="movedTriangle" points="550,85 640,85 640,260" class="cut-fill moved-triangle hidden"></polygon>
+
+              <!-- Höhe -->
+              <line id="heightLine" x1="260" y1="85" x2="260" y2="260" class="height-line hidden"></line>
+              <line id="heightMarkerTop" x1="250" y1="85" x2="270" y2="85" class="height-line hidden"></line>
+              <text id="heightLabel" x="274" y="178" class="svg-label hidden">h</text>
+
+              <!-- Grundseite -->
+              <line x1="260" y1="278" x2="640" y2="278" class="measure-line"></line>
+              <text x="442" y="314" class="svg-label">g</text>
+            </svg>
+          </div>
+
+          <aside class="area-animation-step" aria-live="polite">
+            <h3 id="stepTitle">Schritt 1</h3>
+            <p id="stepDescription">
+              Wir betrachten zunächst das Parallelogramm. Es hat eine Grundseite g und eine zugehörige Höhe h.
+            </p>
+          </aside>
+        </div>
+
+        <div class="button-row">
+          <button id="prevStep" class="secondary-button">Zurück</button>
+          <button id="nextStep" class="primary-button">Nächster Schritt</button>
+          <button id="resetAnimation" class="secondary-button">Neu starten</button>
+        </div>
+      </section>
+
+      <!-- Darunter: Skizze und Berechnung gleich groß nebeneinander -->
+      <section class="panel sketch-calc-panel">
+        <div class="section-heading">
+          <h2>Skizze und Berechnung</h2>
+          <p>
+            Links siehst du die wichtigen Größen. Rechts kannst du Grundseite und Höhe eingeben.
+          </p>
+        </div>
+
+        <div class="sketch-calc-grid equal-columns">
+          <div class="mini-sketch-box equal-box">
+            <h3>Skizze der Fläche</h3>
+
+            <svg class="mini-sketch" viewBox="0 0 360 230" aria-label="Skizze eines Parallelogramms mit Grundseite und Höhe">
+              <polygon points="85,35 280,35 320,175 125,175" class="shape-fill"></polygon>
+              <line x1="125" y1="35" x2="125" y2="175" class="height-line"></line>
+              <line x1="125" y1="198" x2="320" y2="198" class="measure-line"></line>
+              <text x="133" y="112" class="svg-label">h</text>
+              <text x="215" y="222" class="svg-label">g</text>
+            </svg>
+
+            <div class="formula-box">A = g · h</div>
+          </div>
+
+          <form class="calc-box equal-box" id="calcForm">
+            <h3>Berechnung</h3>
+
+            <label for="grundseite">Grundseite g</label>
+            <div class="input-line">
+              <input id="grundseite" type="number" min="0" step="0.1" value="8">
+              <span>cm</span>
+            </div>
+
+            <label for="hoehe">Höhe h</label>
+            <div class="input-line">
+              <input id="hoehe" type="number" min="0" step="0.1" value="5">
+              <span>cm</span>
+            </div>
+
+            <button class="primary-button" type="submit">Fläche berechnen</button>
+
+            <output id="result" class="result-box" aria-live="polite"></output>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="../assets/js/parallelogramm.js"></script>
+</body>
+</html>
