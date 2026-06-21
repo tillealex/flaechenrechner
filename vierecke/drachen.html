@@ -1,37 +1,150 @@
-<!DOCTYPE html>
+<!--
+  SPDX-License-Identifier: GPL-3.0-or-later
+  Copyright (C) 2026 Alexander Tille
+  This file is part of Flächenberechnung.
+  Created and developed with support from ChatGPT.
+-->
+<!doctype html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drachen · Flächenberechnung</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fläche des Drachenvierecks</title>
   <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/area-pages.css">
 </head>
 <body>
-  <div class="seite">
-    <header class="kopfbereich">
-      <p class="mini-titel">Haus der Vierecke</p>
-      <h1>Drachen</h1>
-      <p class="untertitel">
-        Diese Seite ist als Platzhalter angelegt. Die Animation und die Flächenberechnung ergänzen wir später gemeinsam.
-      </p>
+  <div class="page">
+    <nav class="breadcrumb">
+      <a href="../index.html">Startseite</a>
+      <span>›</span>
+      <a href="index.html">Vierecke</a>
+      <span>›</span>
+      Drachenviereck
+    </nav>
+
+    <header class="hero compact">
+      <p class="eyebrow">Vierecke · Flächenberechnung</p>
+      <h1>Drachenviereck</h1>
     </header>
 
-    <main class="inhalt-zweispaltig">
-      <section class="karte">
-        <h2>Animation folgt</h2>
+    <section class="panel figure-summary-panel" aria-labelledby="figureSummaryHeading">
+      <div class="section-heading">
+        <h2 id="figureSummaryHeading">Eigenschaften des Drachenvierecks</h2>
         <p>
-          Hier entsteht später die animierte Herleitung der Flächenformel.
+          Beim Drachenviereck sind zwei Paare benachbarter Seiten gleich lang.
+          Eine Diagonale kann eine Symmetrieachse sein, und die Diagonalen stehen senkrecht aufeinander.
         </p>
+      </div>
+    </section>
+
+    <main class="parallelogramm-layout">
+      <section class="panel animation-panel">
+        <div class="section-heading">
+          <h2>Idee der Berechnung</h2>
+          <p>
+            Wenn die beiden Diagonalen bekannt sind, kannst du die Fläche mit A = e · f : 2 berechnen.
+          </p>
+        </div>
+
+        <div class="area-animation-layout">
+          <div class="area-animation-stage">
+            <svg id="animationSvg" class="geometry-svg" viewBox="0 0 760 360" role="img" aria-label="Animation zur Flächenberechnung eines Drachenvierecks">
+              <defs>
+                <pattern id="redHatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)">
+                  <rect x="0" y="0" width="10" height="10" fill="#fee2e2"></rect>
+                  <line x1="0" y1="0" x2="0" y2="10" class="hatch-line"></line>
+                </pattern>
+                <pattern id="redHatchReverse" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(-45)">
+                  <rect x="0" y="0" width="10" height="10" fill="#fee2e2"></rect>
+                  <line x1="0" y1="0" x2="0" y2="10" class="hatch-line"></line>
+                </pattern>
+              </defs>
+
+              <rect id="diagonalRectangle" x="200" y="45" width="360" height="265" fill="none" class="height-line hidden"></rect>
+              <polygon id="outerTriangleTopLeft" points="200,45 380,45 200,180" fill="url(#redHatch)" class="hidden"></polygon>
+              <polygon id="outerTriangleTopRight" points="380,45 560,45 560,180" fill="url(#redHatchReverse)" class="hidden"></polygon>
+              <polygon id="outerTriangleBottomRight" points="560,180 560,310 380,310" fill="url(#redHatch)" class="hidden"></polygon>
+              <polygon id="outerTriangleBottomLeft" points="200,180 200,310 380,310" fill="url(#redHatchReverse)" class="hidden"></polygon>
+
+              <polygon id="kiteShape" points="380,45 560,180 380,310 200,180" class="shape-fill"></polygon>
+
+              <polygon id="triangleTop" points="380,45 560,180 380,180" fill="url(#redHatch)" class="hidden"></polygon>
+              <polygon id="triangleRight" points="560,180 380,310 380,180" fill="url(#redHatchReverse)" class="hidden"></polygon>
+              <polygon id="triangleBottom" points="380,310 200,180 380,180" fill="url(#redHatch)" class="hidden"></polygon>
+              <polygon id="triangleLeft" points="200,180 380,45 380,180" fill="url(#redHatchReverse)" class="hidden"></polygon>
+
+              <line id="diagonalE" x1="200" y1="180" x2="560" y2="180" class="helper-line hidden"></line>
+              <line id="diagonalF" x1="380" y1="45" x2="380" y2="310" class="helper-line hidden"></line>
+              <text id="diagonalELabel" x="362" y="224" class="svg-label hidden" fill="#dc2626" font-weight="700">e</text>
+              <text id="diagonalFLabel" x="404" y="171" class="svg-label hidden" fill="#dc2626" font-weight="700">f</text>
+              <text id="rectangleELabel" x="375" y="33" class="svg-label hidden" fill="#dc2626" font-weight="700">e</text>
+              <text id="rectangleFLabel" x="576" y="184" class="svg-label hidden" fill="#dc2626" font-weight="700">f</text>
+              <text id="halfLabel" x="380" y="340" class="animation-text hidden">Das Drachenviereck ist die Hälfte des Rechtecks e · f.</text>
+            </svg>
+          </div>
+
+          <aside class="area-animation-step" aria-live="polite">
+            <h3 id="stepTitle">Schritt 1</h3>
+            <p id="stepDescription">
+              Wir betrachten zunächst das Drachenviereck.
+            </p>
+          </aside>
+        </div>
+
+        <div class="button-row">
+          <button id="prevStep" class="secondary-button">Zurück</button>
+          <button id="nextStep" class="primary-button">Nächster Schritt</button>
+          <button id="resetAnimation" class="secondary-button">Neu starten</button>
+        </div>
       </section>
 
-      <section class="karte">
-        <h2>Berechnung folgt</h2>
-        <p>
-          Hier werden später Eingabefelder, Skizze und Rechenweg ergänzt.
-        </p>
-        <p><a class="sekundaer-link" href="index.html">← Zurück zum Haus der Vierecke</a></p>
+      <section class="panel sketch-calc-panel">
+        <div class="section-heading">
+          <h2>Skizze und Berechnung</h2>
+          <p>Links siehst du die Diagonalen des Drachenvierecks. Rechts kannst du e und f eingeben.</p>
+        </div>
+
+        <div class="sketch-calc-grid equal-columns">
+          <div class="mini-sketch-box equal-box">
+            <h3>Skizze der Fläche</h3>
+
+            <svg class="mini-sketch" viewBox="0 0 360 230" aria-label="Skizze eines Drachenvierecks mit Diagonalen">
+              <polygon points="180,18 296,115 180,212 64,115" class="shape-fill"></polygon>
+              <line x1="64" y1="115" x2="296" y2="115" class="helper-line"></line>
+              <line x1="180" y1="18" x2="180" y2="212" class="helper-line"></line>
+              <text x="162" y="158" class="svg-label" fill="#dc2626" font-weight="700">e</text>
+              <text x="204" y="104" class="svg-label" fill="#dc2626" font-weight="700">f</text>
+            </svg>
+
+            <div class="formula-box">A = e · f : 2</div>
+          </div>
+
+          <form class="calc-box equal-box" id="calcForm">
+            <h3>Berechnung</h3>
+
+            <label for="diagonaleE">Diagonale e</label>
+            <div class="input-line">
+              <input id="diagonaleE" type="number" min="0" step="0.1" value="10">
+              <span>cm</span>
+            </div>
+
+            <label for="diagonaleF">Diagonale f</label>
+            <div class="input-line">
+              <input id="diagonaleF" type="number" min="0" step="0.1" value="6">
+              <span>cm</span>
+            </div>
+
+            <button class="primary-button" type="submit">Fläche berechnen</button>
+
+            <output id="result" class="result-box" aria-live="polite"></output>
+          </form>
+        </div>
       </section>
     </main>
   </div>
+
+  <script src="../assets/js/area-page-core.js"></script>
+  <script src="../assets/js/drachen.js"></script>
 </body>
 </html>
