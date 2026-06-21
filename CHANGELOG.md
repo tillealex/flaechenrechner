@@ -21,11 +21,14 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - `.gitignore` für lokale System-, Editor- und temporäre Dateien ergänzt.
 - Kompakte SPDX-Lizenzheader mit **Alexander Tille** als Copyright-Inhaber in mehrere bestehende HTML- und JavaScript-Dateien eingefügt.
 - README.md auf den Projektnamen **Flächenberechnung** und den Rechteinhaber **Alexander Tille** vereinheitlicht.
+- `assets/js/area-page-core.js` als gemeinsame Grundlogik für Flächenseiten angelegt.
 
 ### Changed
 
 - Lizenzhinweise werden künftig als kurzer Dateiheader mit `SPDX-License-Identifier: GPL-3.0-or-later` geführt.
 - Dokumentation wurde auf **GNU GPL v3.0 or later** und **Alexander Tille** vereinheitlicht.
+- Die Parallelogrammseite nutzt testweise den neuen gemeinsamen Flächenseiten-Kern.
+- `assets/js/parallelogramm.js` enthält jetzt nur noch figurspezifische Schritte, SVG-Anpassungen und Berechnungsregeln.
 
 ### Planned
 
@@ -37,6 +40,7 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
   - `assets/css/style.css`,
   - `vierecke/index.html`.
 - Prüfen, ob CSS und JavaScript aus `vierecke/index.html` ausgelagert werden sollten.
+- Wenn sich der neue gemeinsame Kern am Parallelogramm bewährt, Quadrat und Rechteck auf dasselbe Muster umstellen.
 
 ---
 
