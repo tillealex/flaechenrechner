@@ -25,11 +25,22 @@
     <header class="hero compact">
       <p class="eyebrow">Vierecke · Flächenberechnung</p>
       <h1>Raute</h1>
-      <p class="subtitle">
-        Die Fläche einer Raute kann auf zwei verschiedenen Wegen berechnet werden.
-        Je nachdem, welche Größen bekannt oder gut bestimmbar sind, wählst du den passenden Weg.
-      </p>
     </header>
+
+    <section class="panel figure-summary-panel" aria-labelledby="figureSummaryHeading">
+      <div class="section-heading">
+        <h2 id="figureSummaryHeading">Eigenschaften und Wahl des Rechenwegs</h2>
+        <p>
+          Bei der Raute sind alle vier Seiten gleich lang. Die Fläche kann auf zwei verschiedenen Wegen berechnet werden.
+          Je nachdem, welche Größen bekannt oder gut bestimmbar sind, wählst du den passenden Weg.
+        </p>
+      </div>
+
+      <div class="button-row" aria-label="Berechnungsweg wählen">
+        <button class="primary-button" type="button" data-area-method="diagonals" aria-pressed="true">Diagonalen e und f</button>
+        <button class="secondary-button" type="button" data-area-method="base-height" aria-pressed="false">Grundseite · Höhe</button>
+      </div>
+    </section>
 
     <main class="parallelogramm-layout">
       <section class="panel animation-panel">
@@ -38,11 +49,6 @@
           <p id="methodIntro">
             Wenn die beiden Diagonalen bekannt sind, kannst du die Fläche mit A = e · f : 2 berechnen.
           </p>
-        </div>
-
-        <div class="button-row" aria-label="Berechnungsweg wählen">
-          <button class="primary-button" type="button" data-area-method="diagonals" aria-pressed="true">Diagonalen e und f</button>
-          <button class="secondary-button" type="button" data-area-method="base-height" aria-pressed="false">Grundseite · Höhe</button>
         </div>
 
         <div class="area-animation-layout">
