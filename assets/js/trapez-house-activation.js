@@ -7,7 +7,7 @@
 
 (function () {
   document.addEventListener("DOMContentLoaded", () => {
-    const card = document.querySelector('[data-shape="trapez"]');
+    const card = document.querySelector('[data-figur="trapez"]');
     if (!card) return;
 
     const badge = card.querySelector(".status-badge");
