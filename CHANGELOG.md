@@ -26,6 +26,7 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - `assets/js/vierecke-house.js` für die ausgelagerte Interaktionslogik des Hauses der Vierecke angelegt.
 - Flächenseite für die Raute ergänzt.
 - `assets/js/raute.js` mit zwei Berechnungswegen für die Raute ergänzt: Diagonalen `A = e · f : 2` und Grundseite/Höhe `A = a · hₐ`.
+- `assets/css/area-pages.css` für ergänzende Abstände und Segmente auf einzelnen Flächenseiten ergänzt.
 
 ### Changed
 
@@ -41,7 +42,8 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - `assets/js/area-page-core.js` unterstützt jetzt mehrere Berechnungswege auf einer Flächenseite.
 - Die Raute-Kachel im Haus der Vierecke ist jetzt als aktive Flächenseite markiert.
 - Die Eigenschaften-Texte auf den Flächenseiten stehen jetzt in eigenen hervorgehobenen Infoboxen unter dem Titel.
-- Auf der Raute-Seite liegt die Auswahl des Berechnungswegs jetzt direkt in der Eigenschaften- und Hinweisbox.
+- Auf der Raute-Seite ist die obere Infobox in „Eigenschaften der Raute" und „Wahl des Rechenwegs" gegliedert.
+- Die Rechenweg-Auswahl der Raute liegt jetzt im eigenen Segment „Wahl des Rechenwegs" innerhalb der Infobox.
 
 ### Planned
 
