@@ -1,0 +1,40 @@
+# Flächenberechnung
+# Licensed under the GNU General Public License v3.0
+# Created and developed with support from ChatGPT
+
+# Betriebssysteme
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# Temporäre Dateien
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Lokale Umgebungsdateien
+.env
+.env.local
+
+# Node / Build-Tools, falls später eingeführt
+node_modules/
+dist/
+build/
+
+# Python-Hilfsdateien, falls später Skripte verwendet werden
+__pycache__/
+*.pyc
+
+# Archive und lokale Sicherungen
+*.zip
+*.7z
+*.rar
+backup/
+backups/
