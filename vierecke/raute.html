@@ -11,6 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Fläche der Raute</title>
   <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/area-pages.css">
 </head>
 <body>
   <div class="page">
@@ -29,16 +30,24 @@
 
     <section class="panel figure-summary-panel" aria-labelledby="figureSummaryHeading">
       <div class="section-heading">
-        <h2 id="figureSummaryHeading">Eigenschaften und Wahl des Rechenwegs</h2>
+        <h2 id="figureSummaryHeading">Eigenschaften der Raute</h2>
         <p>
-          Bei der Raute sind alle vier Seiten gleich lang. Die Fläche kann auf zwei verschiedenen Wegen berechnet werden.
-          Je nachdem, welche Größen bekannt oder gut bestimmbar sind, wählst du den passenden Weg.
+          Bei der Raute sind alle vier Seiten gleich lang. Gegenüberliegende Seiten sind parallel,
+          und die Diagonalen schneiden sich senkrecht in der Mitte.
         </p>
       </div>
 
-      <div class="button-row" aria-label="Berechnungsweg wählen">
-        <button class="primary-button" type="button" data-area-method="diagonals" aria-pressed="true">Diagonalen e und f</button>
-        <button class="secondary-button" type="button" data-area-method="base-height" aria-pressed="false">Grundseite · Höhe</button>
+      <div class="figure-summary-segment" aria-labelledby="methodChoiceHeading">
+        <h3 id="methodChoiceHeading">Wahl des Rechenwegs</h3>
+        <p>
+          Die Fläche kann auf zwei verschiedenen Wegen berechnet werden. Je nachdem,
+          welche Größen bekannt oder gut bestimmbar sind, wählst du den passenden Weg.
+        </p>
+
+        <div class="button-row" aria-label="Berechnungsweg wählen">
+          <button class="primary-button" type="button" data-area-method="diagonals" aria-pressed="true">Diagonalen e und f</button>
+          <button class="secondary-button" type="button" data-area-method="base-height" aria-pressed="false">Grundseite · Höhe</button>
+        </div>
       </div>
     </section>
 
