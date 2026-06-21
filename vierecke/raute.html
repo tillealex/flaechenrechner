@@ -68,18 +68,31 @@
                   <rect x="0" y="0" width="10" height="10" fill="#fee2e2"></rect>
                   <line x1="0" y1="0" x2="0" y2="10" class="hatch-line"></line>
                 </pattern>
+                <pattern id="redHatchReverse" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(-45)">
+                  <rect x="0" y="0" width="10" height="10" fill="#fee2e2"></rect>
+                  <line x1="0" y1="0" x2="0" y2="10" class="hatch-line"></line>
+                </pattern>
               </defs>
+
+              <rect id="diagonalRectangle" x="180" y="70" width="400" height="220" fill="none" class="height-line hidden"></rect>
+              <polygon id="outerTriangleTopLeft" points="180,70 380,70 180,180" fill="url(#redHatch)" class="hidden"></polygon>
+              <polygon id="outerTriangleTopRight" points="380,70 580,70 580,180" fill="url(#redHatchReverse)" class="hidden"></polygon>
+              <polygon id="outerTriangleBottomRight" points="580,180 580,290 380,290" fill="url(#redHatch)" class="hidden"></polygon>
+              <polygon id="outerTriangleBottomLeft" points="180,180 180,290 380,290" fill="url(#redHatchReverse)" class="hidden"></polygon>
 
               <polygon id="rhombusShape" points="380,70 580,180 380,290 180,180" class="shape-fill"></polygon>
 
+              <polygon id="triangleTop" points="380,70 580,180 380,180" fill="url(#redHatch)" class="hidden"></polygon>
+              <polygon id="triangleRight" points="580,180 380,290 380,180" fill="url(#redHatchReverse)" class="hidden"></polygon>
+              <polygon id="triangleBottom" points="380,290 180,180 380,180" fill="url(#redHatch)" class="hidden"></polygon>
+              <polygon id="triangleLeft" points="180,180 380,70 380,180" fill="url(#redHatchReverse)" class="hidden"></polygon>
+
               <line id="diagonalE" x1="180" y1="180" x2="580" y2="180" class="helper-line hidden"></line>
               <line id="diagonalF" x1="380" y1="70" x2="380" y2="290" class="helper-line hidden"></line>
-              <text id="diagonalELabel" x="368" y="210" class="svg-label hidden">e</text>
-              <text id="diagonalFLabel" x="392" y="183" class="svg-label hidden">f</text>
-
-              <polygon id="triangleTop" points="380,70 580,180 380,180" class="cut-fill hidden"></polygon>
-              <polygon id="triangleBottom" points="380,290 180,180 380,180" class="cut-fill hidden"></polygon>
-              <rect id="diagonalRectangle" x="180" y="70" width="400" height="220" fill="none" class="height-line hidden"></rect>
+              <text id="diagonalELabel" x="362" y="224" class="svg-label hidden" fill="#dc2626" font-weight="700">e</text>
+              <text id="diagonalFLabel" x="404" y="171" class="svg-label hidden" fill="#dc2626" font-weight="700">f</text>
+              <text id="rectangleELabel" x="375" y="58" class="svg-label hidden" fill="#dc2626" font-weight="700">e</text>
+              <text id="rectangleFLabel" x="596" y="184" class="svg-label hidden" fill="#dc2626" font-weight="700">f</text>
               <text id="halfLabel" x="380" y="330" class="animation-text hidden">Die Raute ist die Hälfte des Rechtecks e · f.</text>
 
               <line id="heightLine" x1="340" y1="75" x2="340" y2="282" class="height-line hidden"></line>
