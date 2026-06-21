@@ -28,6 +28,9 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - `assets/js/raute.js` mit zwei Berechnungswegen für die Raute ergänzt: Diagonalen `A = e · f : 2` und Grundseite/Höhe `A = a · hₐ`.
 - `assets/css/area-pages.css` für ergänzende Abstände und Segmente auf einzelnen Flächenseiten ergänzt.
 - `assets/js/raute-base-height-animation.js` als Zusatzlogik für die Grundseite-Höhe-Animation der Raute ergänzt.
+- Flächenseite für das Trapez ergänzt.
+- `assets/js/trapez.js` mit sechsstufiger Herleitung der Trapezformel ergänzt: zwei Trapeze, Parallelogramm, Rechteck und Halbierung.
+- `assets/js/trapez-house-activation.js` zur Aktivierung der Trapez-Kachel im Haus der Vierecke ergänzt.
 
 ### Changed
 
@@ -51,7 +54,7 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 ### Planned
 
 - Weitere Flächenseiten ergänzen.
-- Mögliche nächste Figuren: Trapez, Dreieck, Drachenviereck.
+- Mögliche nächste Figuren: Dreieck, Drachenviereck.
 - Interaktive Pfeile im Haus der Vierecke ergänzen.
 - Perspektivisch zwischen Verstehensmodus und Rechenmodus unterscheiden.
 - Größere Dateien bewusst im Rahmen eines Refactorings prüfen:
