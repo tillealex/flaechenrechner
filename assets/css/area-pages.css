@@ -38,3 +38,7 @@
 .figure-summary-segment .button-row {
   margin-top: 12px;
 }
+
+.area-animation-step p {
+  white-space: pre-line;
+}
