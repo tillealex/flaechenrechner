@@ -48,7 +48,7 @@ const diagonalSteps = [
   },
   {
     title: "Schritt 2",
-    description: "Wir zeichnen die Diagonalen ein. Sie heißen e und f und stehen bei der Raute senkrecht aufeinander.",
+    description: "Wir zeichnen die Diagonalen ein. Die senkrechte Diagonale heißt e, die waagerechte Diagonale heißt f.",
     showDiagonals: true,
     showInnerTriangles: false,
     showRectangle: false,
@@ -66,7 +66,7 @@ const diagonalSteps = [
   },
   {
     title: "Schritt 4",
-    description: "Wir zeichnen ein Rechteck um die Raute. Seine Seitenlängen entsprechen den Diagonalen e und f.",
+    description: "Wir zeichnen ein Rechteck um die Raute. Die waagerechte Seite entspricht f, die senkrechte Seite entspricht e.",
     showDiagonals: true,
     showInnerTriangles: false,
     showRectangle: true,
@@ -75,7 +75,7 @@ const diagonalSteps = [
   },
   {
     title: "Schritt 5",
-    description: "Die schraffierten Zwischenräume sind genauso groß wie die Raute. Die Raute ist also die Hälfte des Rechtecks e · f.",
+    description: "Die schraffierten Zwischenräume sind genauso groß wie die Raute. Der Flächeninhalt der Raute ist also halb so groß wie der Flächeninhalt des Rechtecks e · f.\nA = e · f / 2",
     showDiagonals: true,
     showInnerTriangles: false,
     showRectangle: true,
