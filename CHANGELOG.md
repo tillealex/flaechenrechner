@@ -29,6 +29,10 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - Dokumentation wurde auf **GNU GPL v3.0 or later** und **Alexander Tille** vereinheitlicht.
 - Die Parallelogrammseite nutzt testweise den neuen gemeinsamen Flächenseiten-Kern.
 - `assets/js/parallelogramm.js` enthält jetzt nur noch figurspezifische Schritte, SVG-Anpassungen und Berechnungsregeln.
+- Die Quadratseite nutzt jetzt ebenfalls den gemeinsamen Flächenseiten-Kern.
+- `assets/js/quadrat.js` enthält jetzt nur noch figurspezifische Schritte, SVG-Anpassungen und Berechnungsregeln.
+- Die Rechteckseite nutzt jetzt ebenfalls den gemeinsamen Flächenseiten-Kern.
+- `assets/js/rechteck.js` enthält jetzt nur noch figurspezifische Schritte, SVG-Anpassungen und Berechnungsregeln.
 
 ### Planned
 
@@ -40,7 +44,6 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
   - `assets/css/style.css`,
   - `vierecke/index.html`.
 - Prüfen, ob CSS und JavaScript aus `vierecke/index.html` ausgelagert werden sollten.
-- Wenn sich der neue gemeinsame Kern am Parallelogramm bewährt, Quadrat und Rechteck auf dasselbe Muster umstellen.
 
 ---
 
