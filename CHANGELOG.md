@@ -51,6 +51,8 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - Die Diagonalen-Animation der Raute wurde überarbeitet: Beschriftungen sind versetzt und rot hervorgehoben, innere Dreiecke werden wechselnd schraffiert und die Rechteck-Zwischenräume zeigen die Hälfte-Beziehung.
 - Die Grundseite-Höhe-Animation der Raute zeigt nun wie beim Parallelogramm ein markiertes rechtwinkliges Dreieck und die Umformung zu einem Rechteck mit gleicher Fläche.
 - Die Drachen-Kachel im Haus der Vierecke wird nachgeladen als aktive Flächenseite markiert.
+- Das Drachenviereck wird in Animation und Skizze länger und deutlicher als Drachenform dargestellt.
+- Der letzte Erklärungssatz zur Hälfte-Beziehung steht bei Raute und Drachenviereck nur noch im Schritttext neben der Animation, nicht mehr in der Zeichnung.
 
 ### Planned
 
@@ -79,7 +81,3 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
   - `assets/js/quadrat.js`,
   - `assets/js/rechteck.js`,
   - `assets/js/parallelogramm.js`.
-- README.md mit Projektziel, Struktur, Bedienung, Technik und Lizenzhinweis erstellt.
-- GNU GPL v3.0 als Lizenz ergänzt.
-
-### Design
