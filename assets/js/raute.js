@@ -66,7 +66,7 @@ const diagonalSteps = [
   },
   {
     title: "Schritt 4",
-    description: "Wir zeichnen ein Rechteck um die Raute. Die waagerechte Seite entspricht f, die senkrechte Seite entspricht e.",
+    description: "Wir zeichnen ein Rechteck um die Raute. Die obere Seite wird mit e beschriftet, die rechte Seite mit f.",
     showDiagonals: true,
     showInnerTriangles: false,
     showRectangle: true,
