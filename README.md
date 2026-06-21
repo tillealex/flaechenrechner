@@ -3,6 +3,8 @@
 Ein interaktives Webseiten-Projekt für den Mathematikunterricht.
 Die Seiten erklären Flächenberechnungen anschaulich mit Animationen, Skizzen und Eingabefeldern zur Berechnung.
 
+**Webseite:** https://tillealex.github.io/flaechenrechner/
+
 ## Ziel des Projekts
 
 Die Webseite **Flächenberechnung** soll Schülerinnen und Schülern helfen, Flächenformeln nicht nur auswendig zu lernen, sondern ihre Entstehung zu verstehen.
