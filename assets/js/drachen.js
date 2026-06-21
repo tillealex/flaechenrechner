@@ -11,44 +11,54 @@ const drachenSteps = [
     description: "Wir betrachten ein Drachenviereck. Seine beiden Diagonalen stehen senkrecht aufeinander.",
     showKite: true,
     showDiagonals: false,
-    showTriangles: false,
+    showInnerTriangles: false,
     showRectangle: false,
+    showRectangleLabels: false,
+    showOuterTriangles: false,
     showFinal: false
   },
   {
     title: "Schritt 2",
-    description: "Wir zeichnen die Diagonalen ein: Die waagerechte Diagonale heißt e, die senkrechte Diagonale heißt f.",
+    description: "Wir zeichnen die Diagonalen ein. Die waagerechte Diagonale heißt e, die senkrechte Diagonale heißt f.",
     showKite: true,
     showDiagonals: true,
-    showTriangles: false,
+    showInnerTriangles: false,
     showRectangle: false,
+    showRectangleLabels: false,
+    showOuterTriangles: false,
     showFinal: false
   },
   {
     title: "Schritt 3",
-    description: "Die Diagonalen teilen das Drachenviereck in vier rechtwinklige Dreiecke.",
+    description: "Die Diagonalen teilen das Drachenviereck in vier rechtwinklige Dreiecke. Die Schraffuren zeigen die vier Teilflächen.",
     showKite: true,
     showDiagonals: true,
-    showTriangles: true,
+    showInnerTriangles: true,
     showRectangle: false,
+    showRectangleLabels: false,
+    showOuterTriangles: false,
     showFinal: false
   },
   {
     title: "Schritt 4",
-    description: "Um das Drachenviereck legen wir ein Rechteck. Das Rechteck hat die Seitenlängen e und f.",
+    description: "Wir zeichnen ein Rechteck um das Drachenviereck. Seine Seitenlängen entsprechen den Diagonalen e und f.",
     showKite: true,
     showDiagonals: true,
-    showTriangles: true,
+    showInnerTriangles: false,
     showRectangle: true,
+    showRectangleLabels: true,
+    showOuterTriangles: true,
     showFinal: false
   },
   {
     title: "Schritt 5",
-    description: "Die Zwischenräume sind zusammen genauso groß wie das Drachenviereck. Deshalb ist das Drachenviereck halb so groß wie das Rechteck.\nA = e · f : 2",
+    description: "Die schraffierten Zwischenräume sind genauso groß wie das Drachenviereck. Das Drachenviereck ist also die Hälfte des Rechtecks e · f.\nA = e · f : 2",
     showKite: true,
     showDiagonals: true,
-    showTriangles: true,
+    showInnerTriangles: false,
     showRectangle: true,
+    showRectangleLabels: true,
+    showOuterTriangles: true,
     showFinal: true
   }
 ];
@@ -56,9 +66,11 @@ const drachenSteps = [
 const kiteShape = document.getElementById("kiteShape");
 const diagonalE = document.getElementById("diagonalE");
 const diagonalF = document.getElementById("diagonalF");
+const diagonalIntersection = document.getElementById("diagonalIntersection");
 const labelE = document.getElementById("labelE");
 const labelF = document.getElementById("labelF");
 const kiteTriangles = document.getElementById("kiteTriangles");
+const outerKiteTriangles = document.getElementById("outerKiteTriangles");
 const outerRectangle = document.getElementById("outerRectangle");
 const rectangleLabelE = document.getElementById("rectangleLabelE");
 const rectangleLabelF = document.getElementById("rectangleLabelF");
@@ -71,12 +83,14 @@ AreaPageCore.initAreaPage({
       helpers.setVisibility(kiteShape, step.showKite);
       helpers.setVisibility(diagonalE, step.showDiagonals);
       helpers.setVisibility(diagonalF, step.showDiagonals);
-      helpers.setVisibility(labelE, step.showDiagonals && !step.showRectangle);
-      helpers.setVisibility(labelF, step.showDiagonals && !step.showRectangle);
-      helpers.setVisibility(kiteTriangles, step.showTriangles);
+      helpers.setVisibility(diagonalIntersection, step.showDiagonals);
+      helpers.setVisibility(labelE, step.showDiagonals && !step.showRectangleLabels);
+      helpers.setVisibility(labelF, step.showDiagonals && !step.showRectangleLabels);
+      helpers.setVisibility(kiteTriangles, step.showInnerTriangles);
+      helpers.setVisibility(outerKiteTriangles, step.showOuterTriangles);
       helpers.setVisibility(outerRectangle, step.showRectangle);
-      helpers.setVisibility(rectangleLabelE, step.showRectangle);
-      helpers.setVisibility(rectangleLabelF, step.showRectangle);
+      helpers.setVisibility(rectangleLabelE, step.showRectangleLabels);
+      helpers.setVisibility(rectangleLabelF, step.showRectangleLabels);
       helpers.setVisibility(finalHint, step.showFinal);
     }
   },
