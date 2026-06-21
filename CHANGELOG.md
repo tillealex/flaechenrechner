@@ -24,6 +24,8 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - `assets/js/area-page-core.js` als gemeinsame Grundlogik für Flächenseiten angelegt.
 - `assets/css/vierecke-house.css` für die ausgelagerten Styles des Hauses der Vierecke angelegt.
 - `assets/js/vierecke-house.js` für die ausgelagerte Interaktionslogik des Hauses der Vierecke angelegt.
+- Flächenseite für die Raute ergänzt.
+- `assets/js/raute.js` mit zwei Berechnungswegen für die Raute ergänzt: Diagonalen `A = e · f : 2` und Grundseite/Höhe `A = a · hₐ`.
 
 ### Changed
 
@@ -36,11 +38,13 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - Die Rechteckseite nutzt jetzt ebenfalls den gemeinsamen Flächenseiten-Kern.
 - `assets/js/rechteck.js` enthält jetzt nur noch figurspezifische Schritte, SVG-Anpassungen und Berechnungsregeln.
 - `vierecke/index.html` ist jetzt eine schlankere Strukturdatei und lädt CSS und JavaScript des Hauses aus eigenen Dateien.
+- `assets/js/area-page-core.js` unterstützt jetzt mehrere Berechnungswege auf einer Flächenseite.
+- Die Raute-Kachel im Haus der Vierecke ist jetzt als aktive Flächenseite markiert.
 
 ### Planned
 
 - Weitere Flächenseiten ergänzen.
-- Mögliche nächste Figuren: Raute, Trapez, Dreieck, Drachenviereck.
+- Mögliche nächste Figuren: Trapez, Dreieck, Drachenviereck.
 - Interaktive Pfeile im Haus der Vierecke ergänzen.
 - Perspektivisch zwischen Verstehensmodus und Rechenmodus unterscheiden.
 - Größere Dateien bewusst im Rahmen eines Refactorings prüfen:
