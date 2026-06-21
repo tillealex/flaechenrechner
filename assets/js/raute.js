@@ -21,7 +21,6 @@ const outerTriangleTopRight = document.getElementById("outerTriangleTopRight");
 const outerTriangleBottomRight = document.getElementById("outerTriangleBottomRight");
 const outerTriangleBottomLeft = document.getElementById("outerTriangleBottomLeft");
 const diagonalRectangle = document.getElementById("diagonalRectangle");
-const halfLabel = document.getElementById("halfLabel");
 const heightLine = document.getElementById("heightLine");
 const heightMarker = document.getElementById("heightMarker");
 const heightLabel = document.getElementById("heightLabel");
@@ -45,8 +44,7 @@ const diagonalSteps = [
     showInnerTriangles: false,
     showRectangle: false,
     showRectangleLabels: false,
-    showOuterTriangles: false,
-    showHalfLabel: false
+    showOuterTriangles: false
   },
   {
     title: "Schritt 2",
@@ -55,8 +53,7 @@ const diagonalSteps = [
     showInnerTriangles: false,
     showRectangle: false,
     showRectangleLabels: false,
-    showOuterTriangles: false,
-    showHalfLabel: false
+    showOuterTriangles: false
   },
   {
     title: "Schritt 3",
@@ -65,8 +62,7 @@ const diagonalSteps = [
     showInnerTriangles: true,
     showRectangle: false,
     showRectangleLabels: false,
-    showOuterTriangles: false,
-    showHalfLabel: false
+    showOuterTriangles: false
   },
   {
     title: "Schritt 4",
@@ -75,8 +71,7 @@ const diagonalSteps = [
     showInnerTriangles: false,
     showRectangle: true,
     showRectangleLabels: true,
-    showOuterTriangles: true,
-    showHalfLabel: false
+    showOuterTriangles: true
   },
   {
     title: "Schritt 5",
@@ -85,8 +80,7 @@ const diagonalSteps = [
     showInnerTriangles: false,
     showRectangle: true,
     showRectangleLabels: true,
-    showOuterTriangles: true,
-    showHalfLabel: true
+    showOuterTriangles: true
   }
 ];
 
@@ -139,7 +133,6 @@ function hideAllAnimationHelpers(helpers) {
   helpers.setVisibility(outerTriangleBottomRight, false);
   helpers.setVisibility(outerTriangleBottomLeft, false);
   helpers.setVisibility(diagonalRectangle, false);
-  helpers.setVisibility(halfLabel, false);
   helpers.setVisibility(heightLine, false);
   helpers.setVisibility(heightMarker, false);
   helpers.setVisibility(heightLabel, false);
@@ -200,7 +193,6 @@ AreaPageCore.initAreaPage({
           helpers.setVisibility(diagonalRectangle, step.showRectangle);
           helpers.setVisibility(rectangleELabel, step.showRectangleLabels);
           helpers.setVisibility(rectangleFLabel, step.showRectangleLabels);
-          helpers.setVisibility(halfLabel, step.showHalfLabel);
 
           setGroupVisibility(
             [triangleTop, triangleRight, triangleBottom, triangleLeft],
