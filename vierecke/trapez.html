@@ -1,37 +1,131 @@
+<!--
+  SPDX-License-Identifier: GPL-3.0-or-later
+  Copyright (C) 2026 Alexander Tille
+  This file is part of Flächenberechnung.
+  Created and developed with support from ChatGPT.
+-->
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trapez · Flächenberechnung</title>
+  <title>Fläche des Trapezes – Flächenberechnung</title>
   <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/area-pages.css">
 </head>
 <body>
-  <div class="seite">
-    <header class="kopfbereich">
-      <p class="mini-titel">Haus der Vierecke</p>
-      <h1>Trapez</h1>
-      <p class="untertitel">
-        Diese Seite ist als Platzhalter angelegt. Die Animation und die Flächenberechnung ergänzen wir später gemeinsam.
+  <main class="area-page">
+    <nav class="breadcrumb">
+      <a href="../index.html">Startseite</a>
+      <span>›</span>
+      <a href="index.html">Haus der Vierecke</a>
+      <span>›</span>
+      <strong>Trapez</strong>
+    </nav>
+
+    <header class="area-header">
+      <p class="eyebrow">Flächenberechnung</p>
+      <h1>Fläche des Trapezes</h1>
+      <p class="lead">
+        Die Fläche eines Trapezes lässt sich verstehen, wenn man zwei gleiche Trapeze zu einem Rechteck umformt.
       </p>
     </header>
 
-    <main class="inhalt-zweispaltig">
-      <section class="karte">
-        <h2>Animation folgt</h2>
-        <p>
-          Hier entsteht später die animierte Herleitung der Flächenformel.
-        </p>
-      </section>
+    <section class="property-card">
+      <h2>Eigenschaften des Trapezes</h2>
+      <p>
+        Ein Trapez ist ein Viereck mit einem Paar paralleler Seiten. Für die Flächenberechnung brauchen wir die beiden parallelen Seiten <strong>a</strong> und <strong>c</strong> sowie die Höhe <strong>h</strong>.
+      </p>
+    </section>
 
-      <section class="karte">
-        <h2>Berechnung folgt</h2>
-        <p>
-          Hier werden später Eingabefelder, Skizze und Rechenweg ergänzt.
-        </p>
-        <p><a class="sekundaer-link" href="index.html">← Zurück zum Haus der Vierecke</a></p>
-      </section>
-    </main>
-  </div>
+    <section class="idea-card">
+      <h2>Idee der Berechnung</h2>
+      <div class="idea-layout">
+        <div class="animation-panel">
+          <svg viewBox="0 0 760 360" role="img" aria-labelledby="trapez-title">
+            <title id="trapez-title">Animation zur Flächenformel des Trapezes</title>
+            <defs>
+              <pattern id="trapezHatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <line x1="0" y1="0" x2="0" y2="8" stroke="#dc2626" stroke-width="2"></line>
+              </pattern>
+            </defs>
+
+            <polygon id="trapez-original" points="80,250 320,250 250,110 140,110" fill="#dbeafe" stroke="#111827" stroke-width="3"></polygon>
+            <line x1="80" y1="250" x2="320" y2="250" stroke="#16a34a" stroke-width="7" stroke-linecap="round"></line>
+            <line x1="140" y1="110" x2="250" y2="110" stroke="#dc2626" stroke-width="7" stroke-linecap="round"></line>
+            <text x="193" y="280" fill="#16a34a" font-size="24" font-weight="700">a</text>
+            <text x="190" y="96" fill="#dc2626" font-size="24" font-weight="700">c</text>
+
+            <g id="trapez-copy" class="hidden">
+              <polygon points="320,250 560,250 630,110 460,110" fill="rgba(0,0,0,0.22)" stroke="#111827" stroke-width="3"></polygon>
+              <line x1="460" y1="110" x2="630" y2="110" stroke="#16a34a" stroke-width="7" stroke-linecap="round"></line>
+              <line x1="320" y1="250" x2="560" y2="250" stroke="#dc2626" stroke-width="7" stroke-linecap="round"></line>
+              <text x="535" y="96" fill="#16a34a" font-size="24" font-weight="700">a</text>
+              <text x="430" y="280" fill="#dc2626" font-size="24" font-weight="700">c</text>
+            </g>
+
+            <polygon id="parallelogram-highlight" class="hidden" points="140,110 460,110 560,250 320,250" fill="none" stroke="#f59e0b" stroke-width="5"></polygon>
+            <text id="sum-label" class="hidden" x="285" y="92" fill="#111827" font-size="26" font-weight="700">a + c</text>
+
+            <line id="height-line" class="hidden" x1="320" y1="250" x2="320" y2="110" stroke="#2563eb" stroke-width="4" stroke-dasharray="10 8"></line>
+            <text id="height-label" class="hidden" x="332" y="185" fill="#2563eb" font-size="24" font-weight="700">h</text>
+            <polygon id="cut-triangle" class="hidden" points="560,250 630,250 560,110" fill="url(#trapezHatch)" stroke="#991b1b" stroke-width="2"></polygon>
+
+            <rect id="rectangle-highlight" class="hidden" x="140" y="110" width="420" height="140" fill="none" stroke="#111827" stroke-width="5"></rect>
+            <polygon id="moved-triangle" class="hidden" points="140,110 140,250 210,250" fill="url(#trapezHatch)" stroke="#991b1b" stroke-width="2"></polygon>
+            <text id="rectangle-label" class="hidden" x="255" y="82" fill="#111827" font-size="24" font-weight="700">Fläche: (a + c) · h</text>
+            <text id="two-trapezoids-label" class="hidden" x="235" y="318" fill="#111827" font-size="25" font-weight="700">2 Trapeze ergeben dieses Rechteck.</text>
+          </svg>
+
+          <div class="animation-controls">
+            <button id="prev-step" type="button">Zurück</button>
+            <button id="restart-steps" type="button">Neu starten</button>
+            <button id="next-step" type="button">Weiter</button>
+          </div>
+        </div>
+
+        <aside class="step-panel">
+          <p class="step-kicker">Animation</p>
+          <h3 id="step-title">Schritt 1</h3>
+          <p id="step-description"></p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="work-card">
+      <div class="sketch-panel">
+        <h2>Skizze der Fläche</h2>
+        <svg viewBox="0 0 320 230" role="img" aria-label="Skizze eines Trapezes">
+          <polygon points="40,180 280,180 220,70 100,70" fill="#eff6ff" stroke="#111827" stroke-width="3"></polygon>
+          <line x1="40" y1="180" x2="280" y2="180" stroke="#16a34a" stroke-width="6" stroke-linecap="round"></line>
+          <line x1="100" y1="70" x2="220" y2="70" stroke="#dc2626" stroke-width="6" stroke-linecap="round"></line>
+          <line x1="220" y1="70" x2="220" y2="180" stroke="#2563eb" stroke-width="4" stroke-dasharray="8 6"></line>
+          <text x="156" y="205" fill="#16a34a" font-size="22" font-weight="700">a</text>
+          <text x="154" y="56" fill="#dc2626" font-size="22" font-weight="700">c</text>
+          <text x="232" y="132" fill="#2563eb" font-size="22" font-weight="700">h</text>
+        </svg>
+      </div>
+
+      <div class="calculation-panel">
+        <h2>Berechnung</h2>
+        <div class="formula-box">A = (a + c) · h : 2</div>
+
+        <label for="input-a">Seite a in cm</label>
+        <input id="input-a" type="number" min="0" step="0.1" value="8">
+
+        <label for="input-c">Seite c in cm</label>
+        <input id="input-c" type="number" min="0" step="0.1" value="4">
+
+        <label for="input-h">Höhe h in cm</label>
+        <input id="input-h" type="number" min="0" step="0.1" value="5">
+
+        <button id="calculate-button" type="button">Berechnen</button>
+        <pre id="calculation-output" class="calculation-output"></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="../assets/js/area-page-core.js"></script>
+  <script src="../assets/js/trapez.js"></script>
 </body>
 </html>
