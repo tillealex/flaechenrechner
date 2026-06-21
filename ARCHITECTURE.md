@@ -2,7 +2,9 @@
 
 Technische Architektur des Projekts **Flächenberechnung**.
 
-Dieses Projekt steht unter der **GNU General Public License v3.0**. Siehe `LICENSE`.
+Dieses Projekt steht unter der **GNU General Public License v3.0 or later**. Siehe `LICENSE`.
+
+Copyright (C) 2026 **Alexander Tille**.
 
 Dieses Projekt wurde mit Unterstützung von ChatGPT erstellt und weiterentwickelt.
 
@@ -275,24 +277,41 @@ Mögliche spätere Veröffentlichungswege:
 
 ## 9. Lizenz und Dateiköpfe
 
-Das Projekt steht unter der GNU GPL v3.0.
+Das Projekt steht unter der GNU GPL v3.0 or later.
 
-Offener Strukturpunkt:
-
-Es soll noch geprüft werden, ob jede relevante Code-Datei einen kurzen Lizenz- oder Projektkopf erhalten sollte.
-
-Möglicher Header für HTML/CSS/JS-Dateien:
+Der festgelegte Rechteinhaber ist:
 
 ```text
-Flächenberechnung
-Copyright (C) 2026 Alex / tillealex
-Licensed under the GNU General Public License v3.0
-Created and developed with support from ChatGPT
+Alexander Tille
+```
+
+Für Quellcodedateien soll nach Möglichkeit ein kompakter SPDX-Header verwendet werden.
+
+Für HTML-Dateien:
+
+```html
+<!--
+  SPDX-License-Identifier: GPL-3.0-or-later
+  Copyright (C) 2026 Alexander Tille
+  This file is part of Flächenberechnung.
+  Created and developed with support from ChatGPT.
+-->
+```
+
+Für CSS- und JavaScript-Dateien:
+
+```css
+/*
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * Copyright (C) 2026 Alexander Tille
+ * This file is part of Flächenberechnung.
+ * Created and developed with support from ChatGPT.
+ */
 ```
 
 Wichtig:
 
-Der genaue Wortlaut sollte einmal festgelegt und dann einheitlich verwendet werden.
+Die vollständige Lizenz steht in `LICENSE`. Der Dateiheader soll nur kurz auf die Lizenz und den Rechteinhaber verweisen.
 
 ---
 
@@ -351,8 +370,8 @@ Größere Änderungen:
 
 Empfohlene Reihenfolge:
 
-1. Strukturdateien ergänzen.
-2. Lizenzhinweise in vorhandenen Dateien prüfen.
-3. Entscheiden, ob ein einheitlicher Header eingeführt wird.
-4. Erst danach fachlich weiterbauen.
-5. Bei weiterer Arbeit am Haus der Vierecke CSS/JS-Auslagerung prüfen.
+1. Strukturdateien in `main` mergen.
+2. Lokal testen, ob Startseite und Viereckseiten weiterhin korrekt laden.
+3. Danach fachlich oder strukturell weiterarbeiten.
+4. Bei weiterer Arbeit am Haus der Vierecke CSS/JS-Auslagerung prüfen.
+5. Größere Quellcodedateien wie `vierecke/index.html` nicht halbautomatisch ändern, sondern bei Gelegenheit bewusst refaktorieren.
