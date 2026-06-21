@@ -2,7 +2,9 @@
 
 Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert.
 
-Dieses Projekt steht unter der **GNU General Public License v3.0**. Siehe `LICENSE`.
+Dieses Projekt steht unter der **GNU General Public License v3.0 or later**. Siehe `LICENSE`.
+
+Copyright (C) 2026 **Alexander Tille**.
 
 Dieses Projekt wurde mit Unterstützung von ChatGPT erstellt und weiterentwickelt.
 
@@ -18,10 +20,12 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - `ARCHITECTURE.md` zur Beschreibung der technischen Struktur ergänzt.
 - `.gitignore` für lokale System-, Editor- und temporäre Dateien ergänzt.
 - Kompakte SPDX-Lizenzheader mit **Alexander Tille** als Copyright-Inhaber in mehrere bestehende HTML- und JavaScript-Dateien eingefügt.
+- README.md auf den Projektnamen **Flächenberechnung** und den Rechteinhaber **Alexander Tille** vereinheitlicht.
 
 ### Changed
 
 - Lizenzhinweise werden künftig als kurzer Dateiheader mit `SPDX-License-Identifier: GPL-3.0-or-later` geführt.
+- Dokumentation wurde auf **GNU GPL v3.0 or later** und **Alexander Tille** vereinheitlicht.
 
 ### Planned
 
@@ -29,10 +33,9 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - Mögliche nächste Figuren: Raute, Trapez, Dreieck, Drachenviereck.
 - Interaktive Pfeile im Haus der Vierecke ergänzen.
 - Perspektivisch zwischen Verstehensmodus und Rechenmodus unterscheiden.
-- Lizenzhinweise in den übrigen Dateien systematisch abschließen:
+- Größere Dateien bewusst im Rahmen eines Refactorings prüfen:
   - `assets/css/style.css`,
-  - `vierecke/index.html`,
-  - Dokumentationsdateien bei Bedarf vereinheitlichen.
+  - `vierecke/index.html`.
 - Prüfen, ob CSS und JavaScript aus `vierecke/index.html` ausgelagert werden sollten.
 
 ---
