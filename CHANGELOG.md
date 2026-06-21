@@ -51,9 +51,9 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - Die Diagonalen-Animation der Raute wurde überarbeitet: Beschriftungen sind versetzt und rot hervorgehoben, innere Dreiecke werden wechselnd schraffiert und die Rechteck-Zwischenräume zeigen die Hälfte-Beziehung.
 - Die Grundseite-Höhe-Animation der Raute zeigt nun wie beim Parallelogramm ein markiertes rechtwinkliges Dreieck und die Umformung zu einem Rechteck mit gleicher Fläche.
 - Die Drachen-Kachel im Haus der Vierecke wird nachgeladen als aktive Flächenseite markiert.
-- Das Drachenviereck orientiert sich in der Animation an der Rautenform; die vertikale Diagonale bleibt gleich lang, die horizontale Diagonale ist um den Faktor 1,5 gestreckt.
+- Das Drachenviereck orientiert sich in der Animation an der Rautenform; die horizontale Diagonale ist gestreckt und ihr Schnittpunkt teilt sie im Verhältnis links : rechts = 2 : 1.
 - Der letzte Erklärungssatz zur Hälfte-Beziehung steht bei Raute und Drachenviereck nur noch im Schritttext neben der Animation, nicht mehr in der Zeichnung.
-- Bei Raute und Drachenviereck ist die Diagonalen-Beschriftung vereinheitlicht: `e` bezeichnet die vertikale Diagonale, `f` die horizontale Diagonale; die Rechtecksseiten sind entsprechend beschriftet.
+- Bei Raute und Drachenviereck ist die Rechtecks-Beschriftung vereinheitlicht: Die obere Seite wird mit `e`, die rechte Seite mit `f` beschriftet.
 
 ### Planned
 
