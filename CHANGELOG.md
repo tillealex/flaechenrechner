@@ -31,6 +31,8 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - Flächenseite für das Trapez ergänzt.
 - `assets/js/trapez.js` mit sechsstufiger Herleitung der Trapezformel ergänzt: zwei Trapeze, Parallelogramm, Rechteck und Halbierung.
 - `assets/js/trapez-house-activation.js` zur Aktivierung der Trapez-Kachel im Haus der Vierecke ergänzt.
+- Flächenseite für das Drachenviereck wiederhergestellt.
+- `assets/js/drachen.js` mit fünfschrittiger Herleitung der Drachenformel `A = e · f : 2` ergänzt.
 
 ### Changed
 
@@ -50,11 +52,12 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - Die Rechenweg-Auswahl der Raute liegt jetzt im eigenen Segment „Wahl des Rechenwegs" innerhalb der Infobox.
 - Die Diagonalen-Animation der Raute wurde überarbeitet: Beschriftungen sind versetzt und rot hervorgehoben, innere Dreiecke werden wechselnd schraffiert und die Rechteck-Zwischenräume zeigen die Hälfte-Beziehung.
 - Die Grundseite-Höhe-Animation der Raute zeigt nun wie beim Parallelogramm ein markiertes rechtwinkliges Dreieck und die Umformung zu einem Rechteck mit gleicher Fläche.
+- Die Drachen-Kachel im Haus der Vierecke ist jetzt als aktive Flächenseite markiert.
 
 ### Planned
 
 - Weitere Flächenseiten ergänzen.
-- Mögliche nächste Figuren: Dreieck, Drachenviereck.
+- Mögliche nächste Figuren: Dreieck.
 - Interaktive Pfeile im Haus der Vierecke ergänzen.
 - Perspektivisch zwischen Verstehensmodus und Rechenmodus unterscheiden.
 - Größere Dateien bewusst im Rahmen eines Refactorings prüfen:
