@@ -22,6 +22,8 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - Kompakte SPDX-Lizenzheader mit **Alexander Tille** als Copyright-Inhaber in mehrere bestehende HTML- und JavaScript-Dateien eingefügt.
 - README.md auf den Projektnamen **Flächenberechnung** und den Rechteinhaber **Alexander Tille** vereinheitlicht.
 - `assets/js/area-page-core.js` als gemeinsame Grundlogik für Flächenseiten angelegt.
+- `assets/css/vierecke-house.css` für die ausgelagerten Styles des Hauses der Vierecke angelegt.
+- `assets/js/vierecke-house.js` für die ausgelagerte Interaktionslogik des Hauses der Vierecke angelegt.
 
 ### Changed
 
@@ -33,6 +35,7 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - `assets/js/quadrat.js` enthält jetzt nur noch figurspezifische Schritte, SVG-Anpassungen und Berechnungsregeln.
 - Die Rechteckseite nutzt jetzt ebenfalls den gemeinsamen Flächenseiten-Kern.
 - `assets/js/rechteck.js` enthält jetzt nur noch figurspezifische Schritte, SVG-Anpassungen und Berechnungsregeln.
+- `vierecke/index.html` ist jetzt eine schlankere Strukturdatei und lädt CSS und JavaScript des Hauses aus eigenen Dateien.
 
 ### Planned
 
@@ -43,7 +46,6 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - Größere Dateien bewusst im Rahmen eines Refactorings prüfen:
   - `assets/css/style.css`,
   - `vierecke/index.html`.
-- Prüfen, ob CSS und JavaScript aus `vierecke/index.html` ausgelagert werden sollten.
 
 ---
 
