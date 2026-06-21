@@ -28,6 +28,9 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - `assets/js/raute.js` mit zwei Berechnungswegen für die Raute ergänzt: Diagonalen `A = e · f : 2` und Grundseite/Höhe `A = a · hₐ`.
 - `assets/css/area-pages.css` für ergänzende Abstände und Segmente auf einzelnen Flächenseiten ergänzt.
 - `assets/js/raute-base-height-animation.js` als Zusatzlogik für die Grundseite-Höhe-Animation der Raute ergänzt.
+- Flächenseite für das Drachenviereck ergänzt.
+- `assets/js/drachen.js` mit Diagonalen-Animation und Berechnung `A = e · f : 2` ergänzt.
+- `assets/js/drachen-house-activation.js` markiert die Drachen-Kachel im Haus der Vierecke als aktive Flächenseite.
 
 ### Changed
 
@@ -47,11 +50,12 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - Die Rechenweg-Auswahl der Raute liegt jetzt im eigenen Segment „Wahl des Rechenwegs" innerhalb der Infobox.
 - Die Diagonalen-Animation der Raute wurde überarbeitet: Beschriftungen sind versetzt und rot hervorgehoben, innere Dreiecke werden wechselnd schraffiert und die Rechteck-Zwischenräume zeigen die Hälfte-Beziehung.
 - Die Grundseite-Höhe-Animation der Raute zeigt nun wie beim Parallelogramm ein markiertes rechtwinkliges Dreieck und die Umformung zu einem Rechteck mit gleicher Fläche.
+- Die Drachen-Kachel im Haus der Vierecke wird nachgeladen als aktive Flächenseite markiert.
 
 ### Planned
 
 - Weitere Flächenseiten ergänzen.
-- Mögliche nächste Figuren: Trapez, Dreieck, Drachenviereck.
+- Mögliche nächste Figuren: Trapez, Dreieck.
 - Interaktive Pfeile im Haus der Vierecke ergänzen.
 - Perspektivisch zwischen Verstehensmodus und Rechenmodus unterscheiden.
 - Größere Dateien bewusst im Rahmen eines Refactorings prüfen:
