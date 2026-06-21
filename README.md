@@ -1,11 +1,11 @@
-# Flächenrechner
+# Flächenberechnung
 
 Ein interaktives Webseiten-Projekt für den Mathematikunterricht.
 Die Seiten erklären Flächenberechnungen anschaulich mit Animationen, Skizzen und Eingabefeldern zur Berechnung.
 
 ## Ziel des Projekts
 
-Der Flächenrechner soll Schülerinnen und Schülern helfen, Flächenformeln nicht nur auswendig zu lernen, sondern ihre Entstehung zu verstehen.
+Die Webseite **Flächenberechnung** soll Schülerinnen und Schülern helfen, Flächenformeln nicht nur auswendig zu lernen, sondern ihre Entstehung zu verstehen.
 
 Die Seiten zeigen daher jeweils:
 
@@ -13,6 +13,8 @@ Die Seiten zeigen daher jeweils:
 * eine schrittweise Animation,
 * eine Skizze mit den wichtigen Größen,
 * ein Eingabefeld zur eigenen Berechnung.
+
+Im Mittelpunkt steht das Verständnis. Das Rechnen ergänzt die Herleitung, ist aber nicht der Hauptzweck des Projekts.
 
 ## Aktueller Projektstand
 
@@ -23,11 +25,20 @@ Bisher umgesetzt:
 * Flächenberechnung Quadrat
 * Flächenberechnung Rechteck
 * Flächenberechnung Parallelogramm
+* Projektstrukturdateien für WILFRIED
+* GNU GPL v3.0 als Lizenz
+* kompakte SPDX-Lizenzheader in mehreren Quellcodedateien
 
 ## Projektstruktur
 
 ```text
 flaechenrechner/
+├── README.md
+├── LICENSE
+├── PROJECT_CONTEXT.md
+├── CHANGELOG.md
+├── ARCHITECTURE.md
+├── .gitignore
 ├── index.html
 ├── vierecke/
 │   ├── index.html
@@ -124,7 +135,7 @@ Animation:
 
 ## Bedienung
 
-Das Projekt läuft vollständig lokal im Browser.
+Das Projekt läuft aktuell vollständig lokal im Browser.
 
 Zum Starten:
 
@@ -132,7 +143,8 @@ Zum Starten:
 2. `index.html` im Browser öffnen
 3. Über die Navigation die gewünschte Fläche auswählen
 
-Es ist kein Server und keine Installation notwendig.
+Es ist aktuell kein Server und keine Installation notwendig.
+Eine spätere Veröffentlichung, zum Beispiel über GitHub Pages oder einen eigenen Server, ist möglich.
 
 ## Technische Hinweise
 
@@ -145,6 +157,8 @@ Verwendete Technologien:
 
 Die Berechnungen laufen direkt im Browser.
 Die Animationen werden über JavaScript gesteuert, indem SVG-Elemente ein- und ausgeblendet oder verändert werden.
+
+Das Projekt verwendet bewusst kein Framework und kein Build-System, solange einfache HTML-, CSS- und JavaScript-Dateien für den Unterrichtseinsatz ausreichen.
 
 ## Entwicklungsprinzipien
 
@@ -171,14 +185,17 @@ Mögliche spätere Funktionen:
 * interaktive Pfeile im „Haus der Vierecke“,
 * Erklärungen zu Übergängen zwischen Vierecktypen,
 * Druckansichten für Arbeitsblätter,
-* Aufgabenmodus mit zufälligen Werten.
+* Aufgabenmodus mit zufälligen Werten,
+* perspektivisch ein Wechsel zwischen Verstehensmodus und Rechenmodus.
 
 ## Lizenz
 
-Dieses Projekt steht unter der GNU General Public License v3.0.
+Dieses Projekt steht unter der **GNU General Public License v3.0 or later**.
 
-Das bedeutet: Der Quellcode darf verwendet, verändert und weitergegeben werden. 
-Wer veränderte Versionen veröffentlicht, muss diese ebenfalls unter den Bedingungen der GPLv3 zugänglich machen.
+Copyright (C) 2026 **Alexander Tille**.
+
+Der Quellcode darf verwendet, verändert und weitergegeben werden.
+Wer veränderte Versionen veröffentlicht, muss diese ebenfalls unter den Bedingungen der GPL zugänglich machen.
 
 Weitere Informationen stehen in der Datei `LICENSE`.
 
