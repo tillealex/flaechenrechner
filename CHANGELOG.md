@@ -17,6 +17,11 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - `PROJECT_CONTEXT.md` als Projektgedächtnis für WILFRIED ergänzt.
 - `ARCHITECTURE.md` zur Beschreibung der technischen Struktur ergänzt.
 - `.gitignore` für lokale System-, Editor- und temporäre Dateien ergänzt.
+- Kompakte SPDX-Lizenzheader mit **Alexander Tille** als Copyright-Inhaber in mehrere bestehende HTML- und JavaScript-Dateien eingefügt.
+
+### Changed
+
+- Lizenzhinweise werden künftig als kurzer Dateiheader mit `SPDX-License-Identifier: GPL-3.0-or-later` geführt.
 
 ### Planned
 
@@ -24,7 +29,10 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - Mögliche nächste Figuren: Raute, Trapez, Dreieck, Drachenviereck.
 - Interaktive Pfeile im Haus der Vierecke ergänzen.
 - Perspektivisch zwischen Verstehensmodus und Rechenmodus unterscheiden.
-- Lizenzhinweise in allen Dateien systematisch überprüfen.
+- Lizenzhinweise in den übrigen Dateien systematisch abschließen:
+  - `assets/css/style.css`,
+  - `vierecke/index.html`,
+  - Dokumentationsdateien bei Bedarf vereinheitlichen.
 - Prüfen, ob CSS und JavaScript aus `vierecke/index.html` ausgelagert werden sollten.
 
 ---
