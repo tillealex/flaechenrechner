@@ -10,8 +10,16 @@ const diagonalE = document.getElementById("diagonalE");
 const diagonalF = document.getElementById("diagonalF");
 const diagonalELabel = document.getElementById("diagonalELabel");
 const diagonalFLabel = document.getElementById("diagonalFLabel");
+const rectangleELabel = document.getElementById("rectangleELabel");
+const rectangleFLabel = document.getElementById("rectangleFLabel");
 const triangleTop = document.getElementById("triangleTop");
+const triangleRight = document.getElementById("triangleRight");
 const triangleBottom = document.getElementById("triangleBottom");
+const triangleLeft = document.getElementById("triangleLeft");
+const outerTriangleTopLeft = document.getElementById("outerTriangleTopLeft");
+const outerTriangleTopRight = document.getElementById("outerTriangleTopRight");
+const outerTriangleBottomRight = document.getElementById("outerTriangleBottomRight");
+const outerTriangleBottomLeft = document.getElementById("outerTriangleBottomLeft");
 const diagonalRectangle = document.getElementById("diagonalRectangle");
 const halfLabel = document.getElementById("halfLabel");
 const heightLine = document.getElementById("heightLine");
@@ -34,40 +42,50 @@ const diagonalSteps = [
     title: "Schritt 1",
     description: "Wir betrachten zunächst die Raute. Sie hat vier gleich lange Seiten.",
     showDiagonals: false,
-    showTriangles: false,
+    showInnerTriangles: false,
     showRectangle: false,
+    showRectangleLabels: false,
+    showOuterTriangles: false,
     showHalfLabel: false
   },
   {
     title: "Schritt 2",
     description: "Wir zeichnen die Diagonalen ein. Sie heißen e und f und stehen bei der Raute senkrecht aufeinander.",
     showDiagonals: true,
-    showTriangles: false,
+    showInnerTriangles: false,
     showRectangle: false,
+    showRectangleLabels: false,
+    showOuterTriangles: false,
     showHalfLabel: false
   },
   {
     title: "Schritt 3",
-    description: "Die Diagonalen teilen die Raute in vier rechtwinklige Dreiecke.",
+    description: "Die Diagonalen teilen die Raute in vier rechtwinklige Dreiecke. Die Schraffuren zeigen die vier Teilflächen.",
     showDiagonals: true,
-    showTriangles: true,
+    showInnerTriangles: true,
     showRectangle: false,
+    showRectangleLabels: false,
+    showOuterTriangles: false,
     showHalfLabel: false
   },
   {
     title: "Schritt 4",
-    description: "Aus passenden Dreiecken kann man gedanklich ein Rechteck mit den Seitenlängen e und f bilden.",
+    description: "Wir zeichnen ein Rechteck um die Raute. Seine Seitenlängen entsprechen den Diagonalen e und f.",
     showDiagonals: true,
-    showTriangles: true,
+    showInnerTriangles: false,
     showRectangle: true,
+    showRectangleLabels: true,
+    showOuterTriangles: true,
     showHalfLabel: false
   },
   {
     title: "Schritt 5",
-    description: "Die Raute nimmt die Hälfte dieses Rechtecks ein. Deshalb gilt: A = e · f : 2.",
+    description: "Die schraffierten Zwischenräume sind genauso groß wie die Raute. Die Raute ist also die Hälfte des Rechtecks e · f.",
     showDiagonals: true,
-    showTriangles: false,
+    showInnerTriangles: false,
     showRectangle: true,
+    showRectangleLabels: true,
+    showOuterTriangles: true,
     showHalfLabel: true
   }
 ];
@@ -110,8 +128,16 @@ function hideAllAnimationHelpers(helpers) {
   helpers.setVisibility(diagonalF, false);
   helpers.setVisibility(diagonalELabel, false);
   helpers.setVisibility(diagonalFLabel, false);
+  helpers.setVisibility(rectangleELabel, false);
+  helpers.setVisibility(rectangleFLabel, false);
   helpers.setVisibility(triangleTop, false);
+  helpers.setVisibility(triangleRight, false);
   helpers.setVisibility(triangleBottom, false);
+  helpers.setVisibility(triangleLeft, false);
+  helpers.setVisibility(outerTriangleTopLeft, false);
+  helpers.setVisibility(outerTriangleTopRight, false);
+  helpers.setVisibility(outerTriangleBottomRight, false);
+  helpers.setVisibility(outerTriangleBottomLeft, false);
   helpers.setVisibility(diagonalRectangle, false);
   helpers.setVisibility(halfLabel, false);
   helpers.setVisibility(heightLine, false);
@@ -150,6 +176,10 @@ function activateBaseHeightMethod() {
   showBlock(baseHeightInputs, true);
 }
 
+function setGroupVisibility(elements, visible, helpers) {
+  elements.forEach((element) => helpers.setVisibility(element, visible));
+}
+
 AreaPageCore.initAreaPage({
   defaultMethodId: "diagonals",
   methods: [
@@ -165,12 +195,24 @@ AreaPageCore.initAreaPage({
 
           helpers.setVisibility(diagonalE, step.showDiagonals);
           helpers.setVisibility(diagonalF, step.showDiagonals);
-          helpers.setVisibility(diagonalELabel, step.showDiagonals);
-          helpers.setVisibility(diagonalFLabel, step.showDiagonals);
-          helpers.setVisibility(triangleTop, step.showTriangles);
-          helpers.setVisibility(triangleBottom, step.showTriangles);
+          helpers.setVisibility(diagonalELabel, step.showDiagonals && !step.showRectangleLabels);
+          helpers.setVisibility(diagonalFLabel, step.showDiagonals && !step.showRectangleLabels);
           helpers.setVisibility(diagonalRectangle, step.showRectangle);
+          helpers.setVisibility(rectangleELabel, step.showRectangleLabels);
+          helpers.setVisibility(rectangleFLabel, step.showRectangleLabels);
           helpers.setVisibility(halfLabel, step.showHalfLabel);
+
+          setGroupVisibility(
+            [triangleTop, triangleRight, triangleBottom, triangleLeft],
+            step.showInnerTriangles,
+            helpers
+          );
+
+          setGroupVisibility(
+            [outerTriangleTopLeft, outerTriangleTopRight, outerTriangleBottomRight, outerTriangleBottomLeft],
+            step.showOuterTriangles,
+            helpers
+          );
         }
       },
       calculation: {
