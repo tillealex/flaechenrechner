@@ -42,16 +42,22 @@
     setVisibility(baseMarkedTriangle, active && step === 3);
     setVisibility(baseMovedTriangle, active && step >= 4);
 
-    if (!active || !rhombusShape) {
+    if (!rhombusShape) {
+      return;
+    }
+
+    if (!active) {
       return;
     }
 
     rhombusShape.setAttribute("points", step >= 4 ? rectanglePoints : originalBaseHeightPoints);
   }
 
-  document.addEventListener("click", () => {
-    window.setTimeout(updateBaseHeightDetails, 0);
-  });
+  function scheduleUpdate() {
+    window.queueMicrotask(updateBaseHeightDetails);
+  }
+
+  document.addEventListener("click", scheduleUpdate);
 
   updateBaseHeightDetails();
 })();
