@@ -30,7 +30,7 @@ const drachenSteps = [
   },
   {
     title: "Schritt 3",
-    description: "Die Diagonalen teilen das Drachenviereck in vier rechtwinklige Dreiecke. Die Schraffuren zeigen die vier Teilflächen.",
+    description: "Die Diagonalen teilen das Drachenviereck in vier rechtwinklige Dreiecke. Diese vier Dreiecke schraffieren wir rot.",
     showKite: true,
     showDiagonals: true,
     showInnerTriangles: true,
@@ -41,7 +41,7 @@ const drachenSteps = [
   },
   {
     title: "Schritt 4",
-    description: "Wir zeichnen ein Rechteck um das Drachenviereck. Seine Seitenlängen entsprechen den Diagonalen e und f.",
+    description: "Wir zeichnen ein Rechteck um das Drachenviereck. Die rote Schraffur liegt nun auf den rechtwinkligen Dreiecken zwischen Drachenviereck und Rechteck.",
     showKite: true,
     showDiagonals: true,
     showInnerTriangles: false,
