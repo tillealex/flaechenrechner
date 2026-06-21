@@ -5,7 +5,7 @@
  * Created and developed with support from ChatGPT.
  */
 
-const steps = [
+const rectangleSteps = [
   {
     title: "Schritt 1",
     description: "Wir betrachten zunächst das Rechteck. Die gegenüberliegenden Seiten sind gleich lang.",
@@ -48,77 +48,36 @@ const steps = [
   }
 ];
 
-let currentStep = 0;
-
 const rectangleGrid = document.getElementById("rectangleGrid");
 const unitSquare = document.getElementById("unitSquare");
 const rowSquares = document.getElementById("rowSquares");
 const remainingRows = document.getElementById("remainingRows");
 
-const stepTitle = document.getElementById("stepTitle");
-const stepDescription = document.getElementById("stepDescription");
-
-const nextStepButton = document.getElementById("nextStep");
-const prevStepButton = document.getElementById("prevStep");
-const resetAnimationButton = document.getElementById("resetAnimation");
-
-function setVisibility(element, visible) {
-  element.classList.toggle("hidden", !visible);
-}
-
-function updateAnimation() {
-  const step = steps[currentStep];
-
-  stepTitle.textContent = step.title;
-  stepDescription.textContent = step.description;
-
-  setVisibility(rectangleGrid, step.showGrid);
-  setVisibility(unitSquare, step.showUnit);
-  setVisibility(rowSquares, step.showRowSquares);
-  setVisibility(remainingRows, step.showRemainingRows);
-}
-
-nextStepButton.addEventListener("click", () => {
-  currentStep = Math.min(currentStep + 1, steps.length - 1);
-  updateAnimation();
-});
-
-prevStepButton.addEventListener("click", () => {
-  currentStep = Math.max(currentStep - 1, 0);
-  updateAnimation();
-});
-
-resetAnimationButton.addEventListener("click", () => {
-  currentStep = 0;
-  updateAnimation();
-});
-
-function formatNumber(value) {
-  return Number.isInteger(value) ? String(value) : value.toFixed(2).replace(".", ",");
-}
-
-function calculateArea(event) {
-  event.preventDefault();
-
-  const a = Number(document.getElementById("seitenlaengeA").value);
-  const b = Number(document.getElementById("seitenlaengeB").value);
-  const result = document.getElementById("result");
-
-  if (!Number.isFinite(a) || !Number.isFinite(b) || a <= 0 || b <= 0) {
-    result.innerHTML = "Bitte gib für Länge und Breite positive Zahlen ein.";
-    return;
+AreaPageCore.initAreaPage({
+  animation: {
+    steps: rectangleSteps,
+    renderStep(step, helpers) {
+      helpers.setVisibility(rectangleGrid, step.showGrid);
+      helpers.setVisibility(unitSquare, step.showUnit);
+      helpers.setVisibility(rowSquares, step.showRowSquares);
+      helpers.setVisibility(remainingRows, step.showRemainingRows);
+    }
+  },
+  calculation: {
+    inputs: [
+      { id: "seitenlaengeA", key: "a" },
+      { id: "seitenlaengeB", key: "b" }
+    ],
+    errorMessage: "Bitte gib für Länge und Breite positive Zahlen ein.",
+    calculate(values) {
+      return values.a * values.b;
+    },
+    renderResult(values, area, helpers) {
+      return `
+        A = a · b<br>
+        A = ${helpers.formatNumber(values.a)} cm · ${helpers.formatNumber(values.b)} cm<br>
+        <strong>A = ${helpers.formatNumber(area)} cm²</strong>
+      `;
+    }
   }
-
-  const area = a * b;
-
-  result.innerHTML = `
-    A = a · b<br>
-    A = ${formatNumber(a)} cm · ${formatNumber(b)} cm<br>
-    <strong>A = ${formatNumber(area)} cm²</strong>
-  `;
-}
-
-document.getElementById("calcForm").addEventListener("submit", calculateArea);
-
-updateAnimation();
-document.getElementById("calcForm").dispatchEvent(new Event("submit"));
+});
