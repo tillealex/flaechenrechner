@@ -62,20 +62,20 @@ const figuren = {
   },
   "drachen": {
     name: "Drachen",
-    status: "info",
-    badge: "Eigenschaften",
+    status: "live",
+    badge: "Fläche aktiv",
     icon: '<polygon points="40,4 55,24 40,56 25,24"></polygon>',
     link: "drachen.html",
     kurz: [
       "zwei Paare gleich langer Nachbarseiten",
-      "eine Symmetrieachse möglich",
-      "Diagonalen stehen senkrecht"
+      "Diagonalen stehen senkrecht",
+      "Fläche: A = e · f : 2"
     ],
     details: [
       "Je zwei benachbarte Seiten sind gleich lang.",
       "Eine Diagonale kann Symmetrieachse sein.",
       "Die Diagonalen stehen senkrecht aufeinander.",
-      "Ein Paar gegenüberliegender Winkel ist gleich groß."
+      "Die Fläche berechnet man mit A = e · f : 2."
     ]
   },
   "parallelogramm": {
