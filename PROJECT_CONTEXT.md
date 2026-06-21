@@ -2,7 +2,9 @@
 
 Projektgedächtnis für **Flächenberechnung**.
 
-Dieses Projekt steht unter der **GNU General Public License v3.0**. Siehe `LICENSE`.
+Dieses Projekt steht unter der **GNU General Public License v3.0 or later**. Siehe `LICENSE`.
+
+Copyright (C) 2026 **Alexander Tille**.
 
 Dieses Projekt wurde mit Unterstützung von ChatGPT erstellt und weiterentwickelt.
 
@@ -68,14 +70,12 @@ Aktuell vorhanden:
 - zentrale CSS-Datei unter `assets/css/style.css`,
 - eigene JavaScript-Dateien für die einzelnen Flächenanimationen,
 - README.md,
-- LICENSE mit GNU GPL v3.0.
-
-Noch ergänzt werden im aktuellen Struktur-Schritt:
-
-- `PROJECT_CONTEXT.md`,
-- `CHANGELOG.md`,
-- `ARCHITECTURE.md`,
-- `.gitignore`.
+- PROJECT_CONTEXT.md,
+- CHANGELOG.md,
+- ARCHITECTURE.md,
+- .gitignore,
+- LICENSE mit GNU GPL v3.0,
+- kompakte SPDX-Lizenzheader in mehreren HTML- und JavaScript-Dateien.
 
 ---
 
@@ -87,6 +87,10 @@ Aktuelle Grundstruktur:
 flaechenrechner/
 ├── README.md
 ├── LICENSE
+├── PROJECT_CONTEXT.md
+├── CHANGELOG.md
+├── ARCHITECTURE.md
+├── .gitignore
 ├── index.html
 ├── vierecke/
 │   ├── index.html
@@ -101,15 +105,6 @@ flaechenrechner/
     │   ├── rechteck.js
     │   └── parallelogramm.js
     └── img/
-```
-
-Geplante Strukturdateien:
-
-```text
-├── PROJECT_CONTEXT.md
-├── CHANGELOG.md
-├── ARCHITECTURE.md
-└── .gitignore
 ```
 
 ---
@@ -173,7 +168,7 @@ Struktur und Dokumentation:
 
 - CHANGELOG pflegen.
 - ARCHITECTURE aktuell halten.
-- Prüfen, ob jede Datei einen passenden Lizenzhinweis oder mindestens eine klare Projektzuordnung enthält.
+- Prüfen, ob die übrigen größeren Dateien ebenfalls einen passenden Lizenzheader erhalten sollen.
 - Bei größeren Änderungen Dokumentation aktualisieren.
 
 Fachliche Erweiterungen:
@@ -200,7 +195,7 @@ Technik:
 
 - Das Haus der Vierecke enthält aktuell noch stärker gebündelte Logik in einer HTML-Datei.
 - Die Flächenseiten sind bereits sauberer getrennt: HTML-Seite, zentrale CSS-Datei, eigene JS-Datei.
-- Lizenzhinweise in den einzelnen Dateien sollten noch systematisch überprüft werden.
+- `assets/css/style.css` und `vierecke/index.html` sind größer und sollten bei der nächsten Strukturarbeit behutsam geprüft werden.
 - Der spätere Schüler-Modus ohne automatischen Rechner ist noch nicht geplant oder umgesetzt.
 
 ---
@@ -245,13 +240,13 @@ fix: correct rectangle animation spacing
 
 ## Letzter sinnvoller Git-Stand
 
-Branch für diese Strukturarbeit:
+Strukturarbeit wurde auf folgendem Branch vorbereitet:
 
 ```text
 docs/add-project-structure-files
 ```
 
-Empfohlene Commit-Message für diesen Schritt:
+Zusammenfassende Commit-Message für diesen Schritt:
 
 ```text
 docs: add project structure files
@@ -261,15 +256,10 @@ docs: add project structure files
 
 ## Nächster empfohlener Schritt
 
-Zuerst die Strukturdateien vollständig ergänzen:
+Nach dem Merge der Strukturarbeit in `main` sollte als Nächstes fachlich entschieden werden, welche Flächenseite oder welche Strukturverbesserung umgesetzt wird.
 
-- `PROJECT_CONTEXT.md`,
-- `CHANGELOG.md`,
-- `ARCHITECTURE.md`,
-- `.gitignore`.
+Mögliche nächste technische Aufgabe:
 
-Danach sollte ein kleiner Lizenz- und Strukturcheck folgen:
-
-- Welche Dateien haben bereits einen Lizenzhinweis?
-- Wo ist ein kurzer Header sinnvoll?
-- Welche Inhalte gehören langfristig aus HTML-Dateien in CSS oder JavaScript ausgelagert?
+- `vierecke/index.html` schrittweise entlasten,
+- CSS und JavaScript des Hauses der Vierecke auslagern,
+- vorher einen eigenen Refactoring-Branch anlegen.
