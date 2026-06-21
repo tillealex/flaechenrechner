@@ -34,7 +34,7 @@ const kiteSteps = [
   },
   {
     title: "Schritt 2",
-    description: "Wir zeichnen die Diagonalen ein. Die senkrechte Diagonale heißt e, die waagerechte Diagonale heißt f.",
+    description: "Wir zeichnen die Diagonalen ein. Die waagerechte Diagonale heißt e, die senkrechte Diagonale heißt f.",
     showDiagonals: true,
     showInnerTriangles: false,
     showRectangle: false,
@@ -52,7 +52,7 @@ const kiteSteps = [
   },
   {
     title: "Schritt 4",
-    description: "Wir zeichnen ein Rechteck um das Drachenviereck. Die waagerechte Seite entspricht f, die senkrechte Seite entspricht e.",
+    description: "Wir zeichnen ein Rechteck um das Drachenviereck. Die obere Seite entspricht e, die rechte Seite entspricht f.",
     showDiagonals: true,
     showInnerTriangles: false,
     showRectangle: true,
@@ -96,7 +96,7 @@ AreaPageCore.initAreaPage({
   animation: {
     steps: kiteSteps,
     renderStep(step, helpers) {
-      kiteShape.setAttribute("points", "380,70 680,180 380,290 80,180");
+      kiteShape.setAttribute("points", "480,70 680,180 480,290 80,180");
       hideAllAnimationHelpers(helpers);
 
       helpers.setVisibility(diagonalE, step.showDiagonals);
