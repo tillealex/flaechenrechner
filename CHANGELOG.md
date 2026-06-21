@@ -44,6 +44,7 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - Die Eigenschaften-Texte auf den Flächenseiten stehen jetzt in eigenen hervorgehobenen Infoboxen unter dem Titel.
 - Auf der Raute-Seite ist die obere Infobox in „Eigenschaften der Raute" und „Wahl des Rechenwegs" gegliedert.
 - Die Rechenweg-Auswahl der Raute liegt jetzt im eigenen Segment „Wahl des Rechenwegs" innerhalb der Infobox.
+- Die Diagonalen-Animation der Raute wurde überarbeitet: Beschriftungen sind versetzt und rot hervorgehoben, innere Dreiecke werden wechselnd schraffiert und die Rechteck-Zwischenräume zeigen die Hälfte-Beziehung.
 
 ### Planned
 
