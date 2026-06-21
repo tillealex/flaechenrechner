@@ -1,37 +1,161 @@
-<!DOCTYPE html>
+<!--
+  SPDX-License-Identifier: GPL-3.0-or-later
+  Copyright (C) 2026 Alexander Tille
+  This file is part of Flächenberechnung.
+  Created and developed with support from ChatGPT.
+-->
+<!doctype html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drachen · Flächenberechnung</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fläche des Drachenvierecks</title>
   <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/area-pages.css">
 </head>
+
 <body>
-  <div class="seite">
-    <header class="kopfbereich">
-      <p class="mini-titel">Haus der Vierecke</p>
-      <h1>Drachen</h1>
-      <p class="untertitel">
-        Diese Seite ist als Platzhalter angelegt. Die Animation und die Flächenberechnung ergänzen wir später gemeinsam.
-      </p>
+  <div class="page">
+    <nav class="breadcrumb">
+      <a href="../index.html">Startseite</a>
+      <span>›</span>
+      <a href="index.html">Vierecke</a>
+      <span>›</span>
+      Drachenviereck
+    </nav>
+
+    <header class="hero compact">
+      <p class="eyebrow">Vierecke · Flächenberechnung</p>
+      <h1>Drachenviereck</h1>
     </header>
 
-    <main class="inhalt-zweispaltig">
-      <section class="karte">
-        <h2>Animation folgt</h2>
+    <section class="panel figure-summary-panel" aria-labelledby="figureSummaryHeading">
+      <div class="section-heading">
+        <h2 id="figureSummaryHeading">Eigenschaften des Drachenvierecks</h2>
         <p>
-          Hier entsteht später die animierte Herleitung der Flächenformel.
+          Ein Drachenviereck hat zwei Paare gleich langer Nachbarseiten.
+          Seine Diagonalen stehen senkrecht aufeinander. Für den Flächeninhalt brauchen wir
+          die Diagonalen <strong>e</strong> und <strong>f</strong>.
         </p>
+      </div>
+    </section>
+
+    <main class="parallelogramm-layout">
+      <section class="panel animation-panel">
+        <div class="section-heading">
+          <h2>Idee der Berechnung</h2>
+          <p>
+            Wir legen ein Rechteck um das Drachenviereck. Dabei sieht man, dass das
+            Drachenviereck halb so groß ist wie das Rechteck mit den Seiten e und f.
+          </p>
+        </div>
+
+        <div class="area-animation-layout">
+          <div class="area-animation-stage">
+            <svg id="animationSvg" class="geometry-svg" viewBox="0 0 760 380" role="img" aria-label="Animation zur Flächenberechnung eines Drachenvierecks">
+              <defs>
+                <pattern id="kiteHatchA" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                  <line x1="0" y1="0" x2="0" y2="9" stroke="#2563eb" stroke-width="2"></line>
+                </pattern>
+                <pattern id="kiteHatchB" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+                  <line x1="0" y1="0" x2="0" y2="9" stroke="#dc2626" stroke-width="2"></line>
+                </pattern>
+              </defs>
+
+              <!-- Rechteck um das Drachenviereck -->
+              <rect id="outerRectangle" class="hidden" x="90" y="70" width="600" height="220" fill="rgba(245,158,11,0.06)" stroke="#111827" stroke-width="5"></rect>
+              <text id="rectangleLabelE" class="hidden" x="374" y="55" fill="#111827" font-size="26" font-weight="700">e</text>
+              <text id="rectangleLabelF" class="hidden" x="704" y="188" fill="#2563eb" font-size="24" font-weight="700">f</text>
+
+              <!-- Vier rechtwinklige Dreiecke im Drachen -->
+              <g id="kiteTriangles" class="hidden">
+                <polygon points="90,180 490,70 490,180" fill="url(#kiteHatchA)" opacity="0.45"></polygon>
+                <polygon points="90,180 490,290 490,180" fill="url(#kiteHatchB)" opacity="0.45"></polygon>
+                <polygon points="690,180 490,70 490,180" fill="url(#kiteHatchB)" opacity="0.45"></polygon>
+                <polygon points="690,180 490,290 490,180" fill="url(#kiteHatchA)" opacity="0.45"></polygon>
+              </g>
+
+              <!-- Drachenviereck: horizontale Diagonale e, vertikale Diagonale f, Schnittpunkt 2:1 -->
+              <polygon id="kiteShape" points="90,180 490,70 690,180 490,290" class="shape-fill"></polygon>
+
+              <line id="diagonalE" class="hidden" x1="90" y1="180" x2="690" y2="180" stroke="#111827" stroke-width="4" stroke-linecap="round"></line>
+              <line id="diagonalF" class="hidden" x1="490" y1="70" x2="490" y2="290" stroke="#2563eb" stroke-width="4" stroke-linecap="round"></line>
+              <circle id="diagonalIntersection" class="hidden" cx="490" cy="180" r="5" fill="#111827"></circle>
+
+              <text id="labelE" class="hidden" x="374" y="170" fill="#111827" font-size="24" font-weight="700">e</text>
+              <text id="labelF" class="hidden" x="504" y="186" fill="#2563eb" font-size="24" font-weight="700">f</text>
+
+              <!-- Finale Betonung ohne Textsatz in der Zeichnung -->
+              <g id="finalHint" class="hidden">
+                <rect x="90" y="70" width="600" height="220" fill="none" stroke="#111827" stroke-width="5"></rect>
+                <polygon points="90,180 490,70 690,180 490,290" fill="rgba(59,130,246,0.12)" stroke="#1d4ed8" stroke-width="4"></polygon>
+              </g>
+            </svg>
+          </div>
+
+          <aside class="area-animation-step" aria-live="polite">
+            <h3 id="stepTitle">Schritt 1</h3>
+            <p id="stepDescription">
+              Wir betrachten ein Drachenviereck. Seine beiden Diagonalen stehen senkrecht aufeinander.
+            </p>
+          </aside>
+        </div>
+
+        <div class="button-row">
+          <button id="prevStep" class="secondary-button">Zurück</button>
+          <button id="nextStep" class="primary-button">Nächster Schritt</button>
+          <button id="resetAnimation" class="secondary-button">Neu starten</button>
+        </div>
       </section>
 
-      <section class="karte">
-        <h2>Berechnung folgt</h2>
-        <p>
-          Hier werden später Eingabefelder, Skizze und Rechenweg ergänzt.
-        </p>
-        <p><a class="sekundaer-link" href="index.html">← Zurück zum Haus der Vierecke</a></p>
+      <section class="panel sketch-calc-panel">
+        <div class="section-heading">
+          <h2>Skizze und Berechnung</h2>
+          <p>
+            Links siehst du die Diagonalen e und f. Rechts kannst du eigene Werte einsetzen.
+          </p>
+        </div>
+
+        <div class="sketch-calc-grid equal-columns">
+          <div class="mini-sketch-box equal-box">
+            <h3>Skizze der Fläche</h3>
+
+            <svg class="mini-sketch" viewBox="0 0 360 230" aria-label="Skizze eines Drachenvierecks mit Diagonalen e und f">
+              <polygon points="40,115 215,40 320,115 215,190" class="shape-fill"></polygon>
+              <line x1="40" y1="115" x2="320" y2="115" stroke="#111827" stroke-width="4" stroke-linecap="round"></line>
+              <line x1="215" y1="40" x2="215" y2="190" stroke="#2563eb" stroke-width="4" stroke-linecap="round"></line>
+              <text x="170" y="103" fill="#111827" font-size="22" font-weight="700">e</text>
+              <text x="228" y="122" fill="#2563eb" font-size="22" font-weight="700">f</text>
+            </svg>
+
+            <div class="formula-box">A = e · f : 2</div>
+          </div>
+
+          <form class="calc-box equal-box" id="calcForm">
+            <h3>Berechnung</h3>
+
+            <label for="diagonaleE">Diagonale e</label>
+            <div class="input-line">
+              <input id="diagonaleE" type="number" min="0" step="0.1" value="12">
+              <span>cm</span>
+            </div>
+
+            <label for="diagonaleF">Diagonale f</label>
+            <div class="input-line">
+              <input id="diagonaleF" type="number" min="0" step="0.1" value="8">
+              <span>cm</span>
+            </div>
+
+            <button class="primary-button" type="submit">Fläche berechnen</button>
+
+            <output id="result" class="result-box" aria-live="polite"></output>
+          </form>
+        </div>
       </section>
     </main>
   </div>
+
+  <script src="../assets/js/area-page-core.js"></script>
+  <script src="../assets/js/drachen.js"></script>
 </body>
 </html>
