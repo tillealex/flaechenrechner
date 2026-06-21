@@ -40,6 +40,8 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - `vierecke/index.html` ist jetzt eine schlankere Strukturdatei und lädt CSS und JavaScript des Hauses aus eigenen Dateien.
 - `assets/js/area-page-core.js` unterstützt jetzt mehrere Berechnungswege auf einer Flächenseite.
 - Die Raute-Kachel im Haus der Vierecke ist jetzt als aktive Flächenseite markiert.
+- Die Eigenschaften-Texte auf den Flächenseiten stehen jetzt in eigenen hervorgehobenen Infoboxen unter dem Titel.
+- Auf der Raute-Seite liegt die Auswahl des Berechnungswegs jetzt direkt in der Eigenschaften- und Hinweisbox.
 
 ### Planned
 
