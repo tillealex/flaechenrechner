@@ -108,10 +108,34 @@
     form.dispatchEvent(new Event("submit"));
   }
 
-  function initAreaPage(config) {
-    if (!config || !Array.isArray(config.steps) || config.steps.length === 0) {
-      throw new Error("Area page configuration needs at least one animation step.");
+  function validateConfig(config) {
+    if (!config || !config.animation || !config.calculation) {
+      throw new Error("Area page configuration needs animation and calculation sections.");
     }
+
+    if (!Array.isArray(config.animation.steps) || config.animation.steps.length === 0) {
+      throw new Error("Area page animation needs at least one step.");
+    }
+
+    if (typeof config.animation.renderStep !== "function") {
+      throw new Error("Area page animation needs a renderStep function.");
+    }
+
+    if (!Array.isArray(config.calculation.inputs) || config.calculation.inputs.length === 0) {
+      throw new Error("Area page calculation needs at least one input.");
+    }
+
+    if (typeof config.calculation.calculate !== "function") {
+      throw new Error("Area page calculation needs a calculate function.");
+    }
+
+    if (typeof config.calculation.renderResult !== "function") {
+      throw new Error("Area page calculation needs a renderResult function.");
+    }
+  }
+
+  function initAreaPage(config) {
+    validateConfig(config);
 
     createAnimationController(config.animation);
     createCalculationController(config.calculation);
