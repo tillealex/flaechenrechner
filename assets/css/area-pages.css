@@ -1,0 +1,40 @@
+/*
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * Copyright (C) 2026 Alexander Tille
+ * This file is part of Flächenberechnung.
+ * Created and developed with support from ChatGPT.
+ */
+
+/* =========================================================
+   Ergänzende Gestaltung für einzelne Flächenseiten
+   ========================================================= */
+
+.figure-summary-panel {
+  margin-bottom: 22px;
+}
+
+.figure-summary-panel .section-heading p:last-child {
+  margin-bottom: 0;
+}
+
+.figure-summary-segment {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.figure-summary-segment h3 {
+  margin: 0 0 8px;
+  color: var(--accent-dark);
+  font-size: 1.05rem;
+}
+
+.figure-summary-segment p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.figure-summary-segment .button-row {
+  margin-top: 12px;
+}

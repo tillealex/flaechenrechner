@@ -24,6 +24,10 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - `assets/js/area-page-core.js` als gemeinsame Grundlogik für Flächenseiten angelegt.
 - `assets/css/vierecke-house.css` für die ausgelagerten Styles des Hauses der Vierecke angelegt.
 - `assets/js/vierecke-house.js` für die ausgelagerte Interaktionslogik des Hauses der Vierecke angelegt.
+- Flächenseite für die Raute ergänzt.
+- `assets/js/raute.js` mit zwei Berechnungswegen für die Raute ergänzt: Diagonalen `A = e · f : 2` und Grundseite/Höhe `A = a · hₐ`.
+- `assets/css/area-pages.css` für ergänzende Abstände und Segmente auf einzelnen Flächenseiten ergänzt.
+- `assets/js/raute-base-height-animation.js` als Zusatzlogik für die Grundseite-Höhe-Animation der Raute ergänzt.
 
 ### Changed
 
@@ -36,11 +40,18 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - Die Rechteckseite nutzt jetzt ebenfalls den gemeinsamen Flächenseiten-Kern.
 - `assets/js/rechteck.js` enthält jetzt nur noch figurspezifische Schritte, SVG-Anpassungen und Berechnungsregeln.
 - `vierecke/index.html` ist jetzt eine schlankere Strukturdatei und lädt CSS und JavaScript des Hauses aus eigenen Dateien.
+- `assets/js/area-page-core.js` unterstützt jetzt mehrere Berechnungswege auf einer Flächenseite.
+- Die Raute-Kachel im Haus der Vierecke ist jetzt als aktive Flächenseite markiert.
+- Die Eigenschaften-Texte auf den Flächenseiten stehen jetzt in eigenen hervorgehobenen Infoboxen unter dem Titel.
+- Auf der Raute-Seite ist die obere Infobox in „Eigenschaften der Raute" und „Wahl des Rechenwegs" gegliedert.
+- Die Rechenweg-Auswahl der Raute liegt jetzt im eigenen Segment „Wahl des Rechenwegs" innerhalb der Infobox.
+- Die Diagonalen-Animation der Raute wurde überarbeitet: Beschriftungen sind versetzt und rot hervorgehoben, innere Dreiecke werden wechselnd schraffiert und die Rechteck-Zwischenräume zeigen die Hälfte-Beziehung.
+- Die Grundseite-Höhe-Animation der Raute zeigt nun wie beim Parallelogramm ein markiertes rechtwinkliges Dreieck und die Umformung zu einem Rechteck mit gleicher Fläche.
 
 ### Planned
 
 - Weitere Flächenseiten ergänzen.
-- Mögliche nächste Figuren: Raute, Trapez, Dreieck, Drachenviereck.
+- Mögliche nächste Figuren: Trapez, Dreieck, Drachenviereck.
 - Interaktive Pfeile im Haus der Vierecke ergänzen.
 - Perspektivisch zwischen Verstehensmodus und Rechenmodus unterscheiden.
 - Größere Dateien bewusst im Rahmen eines Refactorings prüfen:
@@ -68,13 +79,3 @@ Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von
 - GNU GPL v3.0 als Lizenz ergänzt.
 
 ### Design
-
-- Einheitliches Layout für Flächenberechnungsseiten eingeführt.
-- Obere Box „Idee der Berechnung" mit Animation und Schrittbeschreibung verwendet.
-- Untere Box mit „Skizze der Fläche" und „Berechnung" verwendet.
-- Animation und Erklärung räumlich getrennt, damit die Darstellung ruhiger wirkt.
-
-### Notes
-
-- Der Fokus des Projekts liegt auf dem Verständnis der Flächenformeln.
-- Die Rechenfunktion ist ergänzend gedacht und nicht Hauptzweck des Projekts.

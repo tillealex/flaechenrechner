@@ -26,20 +26,20 @@ const figuren = {
   },
   "raute": {
     name: "Raute",
-    status: "info",
-    badge: "Eigenschaften",
+    status: "live",
+    badge: "Fläche aktiv",
     icon: '<polygon points="40,6 60,30 40,54 20,30"></polygon>',
     link: "raute.html",
     kurz: [
       "4 gleich lange Seiten",
-      "gegenüberliegende Seiten parallel",
-      "Winkel nicht unbedingt rechte Winkel"
+      "Fläche über Diagonalen oder Höhe",
+      "Diagonalen stehen senkrecht"
     ],
     details: [
       "Alle vier Seiten sind gleich lang.",
       "Gegenüberliegende Seiten sind parallel.",
       "Gegenüberliegende Winkel sind gleich groß.",
-      "Die Diagonalen stehen senkrecht aufeinander und halbieren sich."
+      "Die Fläche kann mit A = e · f : 2 oder mit A = a · hₐ berechnet werden."
     ]
   },
   "rechteck": {

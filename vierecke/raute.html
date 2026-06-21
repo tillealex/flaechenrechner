@@ -1,37 +1,199 @@
-<!DOCTYPE html>
+<!--
+  SPDX-License-Identifier: GPL-3.0-or-later
+  Copyright (C) 2026 Alexander Tille
+  This file is part of Flächenberechnung.
+  Created and developed with support from ChatGPT.
+-->
+<!doctype html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Raute · Flächenberechnung</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fläche der Raute</title>
   <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/area-pages.css">
 </head>
 <body>
-  <div class="seite">
-    <header class="kopfbereich">
-      <p class="mini-titel">Haus der Vierecke</p>
+  <div class="page">
+    <nav class="breadcrumb">
+      <a href="../index.html">Startseite</a>
+      <span>›</span>
+      <a href="index.html">Vierecke</a>
+      <span>›</span>
+      Raute
+    </nav>
+
+    <header class="hero compact">
+      <p class="eyebrow">Vierecke · Flächenberechnung</p>
       <h1>Raute</h1>
-      <p class="untertitel">
-        Diese Seite ist als Platzhalter angelegt. Die Animation und die Flächenberechnung ergänzen wir später gemeinsam.
-      </p>
     </header>
 
-    <main class="inhalt-zweispaltig">
-      <section class="karte">
-        <h2>Animation folgt</h2>
+    <section class="panel figure-summary-panel" aria-labelledby="figureSummaryHeading">
+      <div class="section-heading">
+        <h2 id="figureSummaryHeading">Eigenschaften der Raute</h2>
         <p>
-          Hier entsteht später die animierte Herleitung der Flächenformel.
+          Bei der Raute sind alle vier Seiten gleich lang. Gegenüberliegende Seiten sind parallel,
+          und die Diagonalen schneiden sich senkrecht in der Mitte.
         </p>
+      </div>
+
+      <div class="figure-summary-segment" aria-labelledby="methodChoiceHeading">
+        <h3 id="methodChoiceHeading">Wahl des Rechenwegs</h3>
+        <p>
+          Die Fläche kann auf zwei verschiedenen Wegen berechnet werden. Je nachdem,
+          welche Größen bekannt oder gut bestimmbar sind, wählst du den passenden Weg.
+        </p>
+
+        <div class="button-row" aria-label="Berechnungsweg wählen">
+          <button class="primary-button" type="button" data-area-method="diagonals" aria-pressed="true">Diagonalen e und f</button>
+          <button class="secondary-button" type="button" data-area-method="base-height" aria-pressed="false">Grundseite · Höhe</button>
+        </div>
+      </div>
+    </section>
+
+    <main class="parallelogramm-layout">
+      <section class="panel animation-panel">
+        <div class="section-heading">
+          <h2 id="methodHeading">Weg 1: Diagonalen e und f</h2>
+          <p id="methodIntro">
+            Wenn die beiden Diagonalen bekannt sind, kannst du die Fläche mit A = e · f : 2 berechnen.
+          </p>
+        </div>
+
+        <div class="area-animation-layout">
+          <div class="area-animation-stage">
+            <svg id="animationSvg" class="geometry-svg" viewBox="0 0 760 360" role="img" aria-label="Animation zur Flächenberechnung einer Raute">
+              <defs>
+                <pattern id="redHatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)">
+                  <rect x="0" y="0" width="10" height="10" fill="#fee2e2"></rect>
+                  <line x1="0" y1="0" x2="0" y2="10" class="hatch-line"></line>
+                </pattern>
+                <pattern id="redHatchReverse" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(-45)">
+                  <rect x="0" y="0" width="10" height="10" fill="#fee2e2"></rect>
+                  <line x1="0" y1="0" x2="0" y2="10" class="hatch-line"></line>
+                </pattern>
+              </defs>
+
+              <rect id="diagonalRectangle" x="180" y="70" width="400" height="220" fill="none" class="height-line hidden"></rect>
+              <polygon id="outerTriangleTopLeft" points="180,70 380,70 180,180" fill="url(#redHatch)" class="hidden"></polygon>
+              <polygon id="outerTriangleTopRight" points="380,70 580,70 580,180" fill="url(#redHatchReverse)" class="hidden"></polygon>
+              <polygon id="outerTriangleBottomRight" points="580,180 580,290 380,290" fill="url(#redHatch)" class="hidden"></polygon>
+              <polygon id="outerTriangleBottomLeft" points="180,180 180,290 380,290" fill="url(#redHatchReverse)" class="hidden"></polygon>
+
+              <polygon id="rhombusShape" points="380,70 580,180 380,290 180,180" class="shape-fill"></polygon>
+
+              <polygon id="triangleTop" points="380,70 580,180 380,180" fill="url(#redHatch)" class="hidden"></polygon>
+              <polygon id="triangleRight" points="580,180 380,290 380,180" fill="url(#redHatchReverse)" class="hidden"></polygon>
+              <polygon id="triangleBottom" points="380,290 180,180 380,180" fill="url(#redHatch)" class="hidden"></polygon>
+              <polygon id="triangleLeft" points="180,180 380,70 380,180" fill="url(#redHatchReverse)" class="hidden"></polygon>
+
+              <polygon id="baseMarkedTriangle" points="220,75 340,75 340,282" fill="url(#redHatch)" class="hidden"></polygon>
+              <polygon id="baseMovedTriangle" points="460,75 580,75 580,282" fill="url(#redHatch)" class="hidden"></polygon>
+
+              <line id="diagonalE" x1="180" y1="180" x2="580" y2="180" class="helper-line hidden"></line>
+              <line id="diagonalF" x1="380" y1="70" x2="380" y2="290" class="helper-line hidden"></line>
+              <text id="diagonalELabel" x="362" y="224" class="svg-label hidden" fill="#dc2626" font-weight="700">e</text>
+              <text id="diagonalFLabel" x="404" y="171" class="svg-label hidden" fill="#dc2626" font-weight="700">f</text>
+              <text id="rectangleELabel" x="375" y="58" class="svg-label hidden" fill="#dc2626" font-weight="700">e</text>
+              <text id="rectangleFLabel" x="596" y="184" class="svg-label hidden" fill="#dc2626" font-weight="700">f</text>
+              <text id="halfLabel" x="380" y="330" class="animation-text hidden">Die Raute ist die Hälfte des Rechtecks e · f.</text>
+
+              <line id="heightLine" x1="340" y1="75" x2="340" y2="282" class="height-line hidden"></line>
+              <line id="heightMarker" x1="330" y1="75" x2="350" y2="75" class="height-line hidden"></line>
+              <text id="heightLabel" x="352" y="182" class="svg-label hidden">hₐ</text>
+              <line id="baseLine" x1="340" y1="307" x2="580" y2="307" class="measure-line hidden"></line>
+              <text id="baseLabel" x="452" y="335" class="svg-label hidden">a</text>
+            </svg>
+          </div>
+
+          <aside class="area-animation-step" aria-live="polite">
+            <h3 id="stepTitle">Schritt 1</h3>
+            <p id="stepDescription">
+              Wir betrachten zunächst die Raute. Sie hat vier gleich lange Seiten.
+            </p>
+          </aside>
+        </div>
+
+        <div class="button-row">
+          <button id="prevStep" class="secondary-button">Zurück</button>
+          <button id="nextStep" class="primary-button">Nächster Schritt</button>
+          <button id="resetAnimation" class="secondary-button">Neu starten</button>
+        </div>
       </section>
 
-      <section class="karte">
-        <h2>Berechnung folgt</h2>
-        <p>
-          Hier werden später Eingabefelder, Skizze und Rechenweg ergänzt.
-        </p>
-        <p><a class="sekundaer-link" href="index.html">← Zurück zum Haus der Vierecke</a></p>
+      <section class="panel sketch-calc-panel">
+        <div class="section-heading">
+          <h2>Skizze und Berechnung</h2>
+          <p id="sketchIntro">
+            Links siehst du die Diagonalen der Raute. Rechts kannst du e und f eingeben.
+          </p>
+        </div>
+
+        <div class="sketch-calc-grid equal-columns">
+          <div class="mini-sketch-box equal-box">
+            <h3>Skizze der Fläche</h3>
+
+            <svg id="diagonalSketch" class="mini-sketch" viewBox="0 0 360 230" aria-label="Skizze einer Raute mit Diagonalen">
+              <polygon points="180,24 306,115 180,206 54,115" class="shape-fill"></polygon>
+              <line x1="54" y1="115" x2="306" y2="115" class="helper-line"></line>
+              <line x1="180" y1="24" x2="180" y2="206" class="helper-line"></line>
+              <text x="162" y="158" class="svg-label" fill="#dc2626" font-weight="700">e</text>
+              <text x="204" y="104" class="svg-label" fill="#dc2626" font-weight="700">f</text>
+            </svg>
+
+            <svg id="baseHeightSketch" class="mini-sketch hidden" viewBox="0 0 360 230" aria-label="Skizze einer Raute mit Grundseite und Höhe">
+              <polygon points="76,34 220,34 292,178 148,178" class="shape-fill"></polygon>
+              <line x1="148" y1="34" x2="148" y2="178" class="height-line"></line>
+              <line x1="148" y1="200" x2="292" y2="200" class="measure-line"></line>
+              <text x="156" y="112" class="svg-label">hₐ</text>
+              <text x="214" y="224" class="svg-label">a</text>
+            </svg>
+
+            <div id="formulaBox" class="formula-box">A = e · f : 2</div>
+          </div>
+
+          <form class="calc-box equal-box" id="calcForm">
+            <h3>Berechnung</h3>
+
+            <div id="diagonalInputs">
+              <label for="diagonaleE">Diagonale e</label>
+              <div class="input-line">
+                <input id="diagonaleE" type="number" min="0" step="0.1" value="10">
+                <span>cm</span>
+              </div>
+
+              <label for="diagonaleF">Diagonale f</label>
+              <div class="input-line">
+                <input id="diagonaleF" type="number" min="0" step="0.1" value="6">
+                <span>cm</span>
+              </div>
+            </div>
+
+            <div id="baseHeightInputs" class="hidden">
+              <label for="seiteA">Grundseite a</label>
+              <div class="input-line">
+                <input id="seiteA" type="number" min="0" step="0.1" value="8">
+                <span>cm</span>
+              </div>
+
+              <label for="hoeheA">Höhe hₐ</label>
+              <div class="input-line">
+                <input id="hoeheA" type="number" min="0" step="0.1" value="4">
+                <span>cm</span>
+              </div>
+            </div>
+
+            <button class="primary-button" type="submit">Fläche berechnen</button>
+
+            <output id="result" class="result-box" aria-live="polite"></output>
+          </form>
+        </div>
       </section>
     </main>
   </div>
+
+  <script src="../assets/js/area-page-core.js"></script>
+  <script src="../assets/js/raute.js"></script>
+  <script src="../assets/js/raute-base-height-animation.js"></script>
 </body>
 </html>
