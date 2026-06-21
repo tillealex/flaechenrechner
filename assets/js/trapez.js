@@ -9,71 +9,78 @@ const trapezSteps = [
   {
     title: "Schritt 1",
     description: "Wir betrachten ein Trapez. Die parallelen Seiten a und c sind markiert: a ist grün, c ist rot.",
+    showOriginal: true,
     showCopy: false,
     showParallelogram: false,
     showHeight: false,
     showCutTriangle: false,
     showRectangle: false,
     showMovedTriangle: false,
-    showDoubleInfo: false
+    showFinalRectangle: false
   },
   {
     title: "Schritt 2",
     description: "Ein zweites, um 180° gedrehtes Trapez wird daneben gelegt. Es ist halbtransparent schwarz dargestellt. Auch dort bleiben a und c markiert.",
+    showOriginal: true,
     showCopy: true,
     showParallelogram: false,
     showHeight: false,
     showCutTriangle: false,
     showRectangle: false,
     showMovedTriangle: false,
-    showDoubleInfo: false
+    showFinalRectangle: false
   },
   {
     title: "Schritt 3",
     description: "Die beiden Trapeze bilden zusammen ein Parallelogramm. Seine Grundseite setzt sich aus a + c zusammen.",
+    showOriginal: true,
     showCopy: true,
     showParallelogram: true,
     showHeight: false,
     showCutTriangle: false,
     showRectangle: false,
     showMovedTriangle: false,
-    showDoubleInfo: false
+    showFinalRectangle: false
   },
   {
     title: "Schritt 4",
     description: "Im blauen Trapez zeichnen wir links die Höhe h ein. Dadurch entsteht links unten ein rechtwinkliges Dreieck, das wir schraffieren.",
+    showOriginal: true,
     showCopy: true,
     showParallelogram: true,
     showHeight: true,
     showCutTriangle: true,
     showRectangle: false,
     showMovedTriangle: false,
-    showDoubleInfo: false
+    showFinalRectangle: false
   },
   {
     title: "Schritt 5",
     description: "Das schraffierte Dreieck wird ausgeschnitten und gedreht an der rechten Seite angefügt. So entsteht ein Rechteck mit dem Flächeninhalt (a + c) · h.",
+    showOriginal: true,
     showCopy: true,
     showParallelogram: true,
     showHeight: true,
     showCutTriangle: false,
     showRectangle: true,
     showMovedTriangle: true,
-    showDoubleInfo: false
+    showFinalRectangle: false
   },
   {
     title: "Schritt 6",
-    description: "In dieses Rechteck passen genau zwei gleich große Trapeze. Deshalb ist die Fläche eines Trapezes halb so groß.\nA = (a + c) · h : 2",
-    showCopy: true,
+    description: "Jetzt betrachten wir nur noch das entstandene Rechteck. Es hat die Seitenlängen a + c und h. In dieses Rechteck passen zwei gleich große Trapeze.\nA = (a + c) · h : 2",
+    showOriginal: false,
+    showCopy: false,
     showParallelogram: false,
-    showHeight: true,
+    showHeight: false,
     showCutTriangle: false,
-    showRectangle: true,
-    showMovedTriangle: true,
-    showDoubleInfo: true
+    showRectangle: false,
+    showMovedTriangle: false,
+    showFinalRectangle: true
   }
 ];
 
+const trapezOriginalGroup = document.getElementById("trapezOriginalGroup");
 const trapezCopy = document.getElementById("trapezCopy");
 const parallelogramHighlight = document.getElementById("parallelogramHighlight");
 const sumLabel = document.getElementById("sumLabel");
@@ -84,25 +91,24 @@ const heightLabel = document.getElementById("heightLabel");
 const cutTriangle = document.getElementById("cutTriangle");
 const rectangleHighlight = document.getElementById("rectangleHighlight");
 const movedTriangle = document.getElementById("movedTriangle");
-const rectangleLabel = document.getElementById("rectangleLabel");
-const doubleInfo = document.getElementById("doubleInfo");
+const finalRectangle = document.getElementById("finalRectangle");
 
 AreaPageCore.initAreaPage({
   animation: {
     steps: trapezSteps,
     renderStep(step, helpers) {
+      helpers.setVisibility(trapezOriginalGroup, step.showOriginal);
       helpers.setVisibility(trapezCopy, step.showCopy);
       helpers.setVisibility(parallelogramHighlight, step.showParallelogram);
       helpers.setVisibility(sumLabel, step.showParallelogram);
-      helpers.setVisibility(topLabelOriginal, !step.showParallelogram);
+      helpers.setVisibility(topLabelOriginal, step.showOriginal && !step.showParallelogram);
       helpers.setVisibility(topLabelCopy, step.showCopy && !step.showParallelogram);
       helpers.setVisibility(heightLine, step.showHeight);
       helpers.setVisibility(heightLabel, step.showHeight);
       helpers.setVisibility(cutTriangle, step.showCutTriangle);
       helpers.setVisibility(rectangleHighlight, step.showRectangle);
       helpers.setVisibility(movedTriangle, step.showMovedTriangle);
-      helpers.setVisibility(rectangleLabel, step.showRectangle);
-      helpers.setVisibility(doubleInfo, step.showDoubleInfo);
+      helpers.setVisibility(finalRectangle, step.showFinalRectangle);
     }
   },
   calculation: {
