@@ -68,7 +68,7 @@ const figuren = {
     link: "drachen.html",
     kurz: [
       "zwei Paare gleich langer Nachbarseiten",
-      "Diagonalen e und f",
+      "Diagonalen stehen senkrecht",
       "Fläche: A = e · f : 2"
     ],
     details: [
@@ -218,96 +218,182 @@ const uebergaenge = {
       "Die Winkel müssen nicht mehr rechte Winkel sein.",
       "Das Rechteck darf schief geschoben werden."
     ],
-    merksatz: "Beim Parallelogramm wird die Bedingung gelockert, dass alle Winkel rechte Winkel sein müssen."
+    merksatz: "Ein Parallelogramm ist wie ein schiefes Rechteck."
+  },
+  "rechteck-gleich-trapez": {
+    von: "rechteck",
+    nach: "gleich-trapez",
+    titel: "Vom Rechteck zum gleichschenkligen Trapez",
+    bleibt: [
+      "Ein Paar gegenüberliegender Seiten bleibt parallel.",
+      "Die Figur bleibt symmetrisch."
+    ],
+    aendert: [
+      "Das zweite Seitenpaar muss nicht mehr parallel sein.",
+      "Die Winkel müssen nicht mehr rechte Winkel sein."
+    ],
+    merksatz: "Beim gleichschenkligen Trapez bleibt nur ein Paar paralleler Seiten übrig, die Schenkel sind gleich lang."
+  },
+  "parallelogramm-trapez": {
+    von: "parallelogramm",
+    nach: "trapez",
+    titel: "Vom Parallelogramm zum Trapez",
+    bleibt: [
+      "Ein Paar gegenüberliegender Seiten bleibt parallel."
+    ],
+    aendert: [
+      "Das zweite Seitenpaar muss nicht mehr parallel sein.",
+      "Gegenüberliegende Seiten müssen nicht mehr gleich lang sein."
+    ],
+    merksatz: "Ein Trapez ist allgemeiner: Ein paralleles Seitenpaar genügt."
+  },
+  "gleich-trapez-trapez": {
+    von: "gleich-trapez",
+    nach: "trapez",
+    titel: "Vom gleichschenkligen Trapez zum Trapez",
+    bleibt: [
+      "Ein Paar gegenüberliegender Seiten bleibt parallel."
+    ],
+    aendert: [
+      "Die Schenkel müssen nicht mehr gleich lang sein.",
+      "Die Achsensymmetrie kann wegfallen."
+    ],
+    merksatz: "Ein normales Trapez braucht keine gleich langen Schenkel."
+  },
+  "drachen-allgemein": {
+    von: "drachen",
+    nach: "allgemein",
+    titel: "Vom Drachen zum allgemeinen Viereck",
+    bleibt: [
+      "Die Figur hat weiterhin vier Seiten und vier Ecken."
+    ],
+    aendert: [
+      "Benachbarte Seiten müssen nicht mehr gleich lang sein.",
+      "Eine Symmetrieachse ist nicht mehr nötig."
+    ],
+    merksatz: "Beim allgemeinen Viereck bleiben nur die Grundmerkmale: vier Seiten und vier Ecken."
+  },
+  "trapez-allgemein": {
+    von: "trapez",
+    nach: "allgemein",
+    titel: "Vom Trapez zum allgemeinen Viereck",
+    bleibt: [
+      "Die Figur hat weiterhin vier Seiten und vier Ecken."
+    ],
+    aendert: [
+      "Es muss kein Seitenpaar mehr parallel sein."
+    ],
+    merksatz: "Beim allgemeinen Viereck gibt es keine zusätzliche Parallelitätsbedingung mehr."
   }
 };
 
-function zeigeFigur(figurKey) {
-  const figur = figuren[figurKey];
-  if (!figur) return;
+const figurReihenfolgeMobil = [
+  ["Dach", ["quadrat"]],
+  ["2. Etage", ["raute", "rechteck"]],
+  ["3. Etage", ["drachen", "parallelogramm", "gleich-trapez"]],
+  ["4. Etage", ["trapez"]],
+  ["Erdgeschoss", ["allgemein"]]
+];
 
-  const title = document.getElementById("infoTitle");
-  const body = document.getElementById("infoBody");
-  const link = document.getElementById("infoLink");
+function erstelleFigurButton(figurId) {
+  const figur = figuren[figurId];
+  const link = document.createElement("a");
+  link.className = "figur-button";
+  link.href = figur.link || "#";
+  link.dataset.figur = figurId;
+  link.setAttribute("aria-label", `${figur.name}: zur Flächenberechnung wechseln`);
 
-  title.textContent = figur.name;
-  body.innerHTML = `
+  link.innerHTML = `
+    <div class="figur-kurz">
+      <svg class="figur-icon" viewBox="0 0 80 60" aria-hidden="true">${figur.icon}</svg>
+      <div class="figur-name">${figur.name}</div>
+      <span class="badge ${figur.status}">${figur.badge}</span>
+    </div>
+    <div class="eigenschaften-in-kachel">
+      <strong>Eigenschaften:</strong>
+      <ul>${figur.kurz.map(eigenschaft => `<li>${eigenschaft}</li>`).join("")}</ul>
+    </div>
+  `;
+
+  return link;
+}
+
+function baueKnoten() {
+  document.querySelectorAll(".knoten[data-figur]").forEach(knoten => {
+    const figurId = knoten.dataset.figur;
+    knoten.appendChild(erstelleFigurButton(figurId));
+  });
+}
+
+function baueMobileListe() {
+  const liste = document.getElementById("mobileListe");
+
+  figurReihenfolgeMobil.forEach(([titel, figurenIds]) => {
+    const gruppe = document.createElement("div");
+    gruppe.className = "mobile-gruppe";
+
+    const ueberschrift = document.createElement("h2");
+    ueberschrift.textContent = titel;
+    gruppe.appendChild(ueberschrift);
+
+    const zeile = document.createElement("div");
+    zeile.className = "mobile-zeile";
+
+    figurenIds.forEach(figurId => {
+      const umschlag = document.createElement("div");
+      umschlag.className = `knoten-mobile ${figurId}`;
+      umschlag.dataset.figur = figurId;
+      umschlag.appendChild(erstelleFigurButton(figurId));
+      zeile.appendChild(umschlag);
+    });
+
+    gruppe.appendChild(zeile);
+    liste.appendChild(gruppe);
+  });
+}
+
+function setzeMarkierteFiguren(markierungen = []) {
+  document.querySelectorAll(".knoten, .knoten-mobile").forEach(knoten => {
+    const istMarkiert = markierungen.includes(knoten.dataset.figur);
+    knoten.classList.toggle("markiert", istMarkiert);
+  });
+}
+
+function setzeAktivenPfeil(uebergangId) {
+  document.querySelectorAll(".pfeil-gruppe").forEach(pfeil => {
+    pfeil.classList.toggle("aktiv", pfeil.dataset.uebergang === uebergangId);
+  });
+}
+
+function zeigeUebergang(uebergangId) {
+  const uebergang = uebergaenge[uebergangId];
+  if (!uebergang) return;
+
+  setzeMarkierteFiguren([uebergang.von, uebergang.nach]);
+  setzeAktivenPfeil(uebergangId);
+
+  document.getElementById("uebergangKachel").innerHTML = `
+    <h2>${uebergang.titel}</h2>
+    <p>${uebergang.merksatz}</p>
     <ul>
-      ${figur.details.map(detail => `<li>${detail}</li>`).join("")}
+      ${uebergang.aendert.map(text => `<li>${text}</li>`).join("")}
+      ${uebergang.bleibt.map(text => `<li>${text}</li>`).join("")}
     </ul>
   `;
-  link.href = figur.link;
-  link.textContent = figur.status === "live" ? `Zur Fläche: ${figur.name}` : `Mehr zu: ${figur.name}`;
 }
 
-function zeigeUebergang(uebergangKey) {
-  const u = uebergaenge[uebergangKey];
-  if (!u) return;
-
-  const title = document.getElementById("infoTitle");
-  const body = document.getElementById("infoBody");
-  const link = document.getElementById("infoLink");
-
-  title.textContent = u.titel;
-  body.innerHTML = `
-    <h3>Was bleibt?</h3>
-    <ul>${u.bleibt.map(text => `<li>${text}</li>`).join("")}</ul>
-    <h3>Was ändert sich?</h3>
-    <ul>${u.aendert.map(text => `<li>${text}</li>`).join("")}</ul>
-    <p><strong>Merksatz:</strong> ${u.merksatz}</p>
-  `;
-  link.href = figuren[u.nach].link;
-  link.textContent = `Weiter zu: ${figuren[u.nach].name}`;
-}
-
-function initialisiereHaus() {
-  document.querySelectorAll(".knoten[data-figur]").forEach(knoten => {
-    const key = knoten.dataset.figur;
-    const figur = figuren[key];
-    if (!figur) return;
-
-    const badge = document.createElement("span");
-    badge.className = `badge ${figur.status === "live" ? "live" : "info"}`;
-    badge.textContent = figur.badge;
-
-    const icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    icon.setAttribute("viewBox", "0 0 80 64");
-    icon.classList.add("knoten-icon");
-    icon.innerHTML = figur.icon;
-
-    const name = document.createElement("strong");
-    name.textContent = figur.name;
-
-    const kurz = document.createElement("ul");
-    figur.kurz.forEach(text => {
-      const li = document.createElement("li");
-      li.textContent = text;
-      kurz.appendChild(li);
-    });
-
-    knoten.appendChild(badge);
-    knoten.appendChild(icon);
-    knoten.appendChild(name);
-    knoten.appendChild(kurz);
-
-    knoten.addEventListener("click", () => {
-      if (figur.status === "live") {
-        window.location.href = figur.link;
-      } else {
-        zeigeFigur(key);
+function aktivierePfeile() {
+  document.querySelectorAll(".pfeil-gruppe").forEach(pfeil => {
+    pfeil.addEventListener("click", () => zeigeUebergang(pfeil.dataset.uebergang));
+    pfeil.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        zeigeUebergang(pfeil.dataset.uebergang);
       }
     });
-
-    knoten.addEventListener("mouseenter", () => zeigeFigur(key));
   });
-
-  document.querySelectorAll(".haus-pfeil[data-uebergang]").forEach(pfeil => {
-    const key = pfeil.dataset.uebergang;
-    pfeil.addEventListener("click", () => zeigeUebergang(key));
-    pfeil.addEventListener("mouseenter", () => zeigeUebergang(key));
-  });
-
-  zeigeFigur("quadrat");
 }
 
-initialisiereHaus();
+baueKnoten();
+baueMobileListe();
+aktivierePfeile();
