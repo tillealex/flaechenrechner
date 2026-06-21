@@ -41,7 +41,7 @@ const trapezSteps = [
   },
   {
     title: "Schritt 4",
-    description: "Die Höhe h trennt ein rechtwinkliges Dreieck vom Parallelogramm ab. Dieses Dreieck wird schraffiert.",
+    description: "Im blauen Trapez zeichnen wir links die Höhe h ein. Dadurch entsteht links unten ein rechtwinkliges Dreieck, das wir schraffieren.",
     showCopy: true,
     showParallelogram: true,
     showHeight: true,
@@ -52,7 +52,7 @@ const trapezSteps = [
   },
   {
     title: "Schritt 5",
-    description: "Das Dreieck wird an der anderen Seite angefügt. Es entsteht ein Rechteck mit dem Flächeninhalt (a + c) · h.",
+    description: "Das schraffierte Dreieck wird ausgeschnitten und gedreht an der rechten Seite angefügt. So entsteht ein Rechteck mit dem Flächeninhalt (a + c) · h.",
     showCopy: true,
     showParallelogram: true,
     showHeight: true,
@@ -77,6 +77,8 @@ const trapezSteps = [
 const trapezCopy = document.getElementById("trapezCopy");
 const parallelogramHighlight = document.getElementById("parallelogramHighlight");
 const sumLabel = document.getElementById("sumLabel");
+const topLabelOriginal = document.getElementById("topLabelOriginal");
+const topLabelCopy = document.getElementById("topLabelCopy");
 const heightLine = document.getElementById("heightLine");
 const heightLabel = document.getElementById("heightLabel");
 const cutTriangle = document.getElementById("cutTriangle");
@@ -92,6 +94,8 @@ AreaPageCore.initAreaPage({
       helpers.setVisibility(trapezCopy, step.showCopy);
       helpers.setVisibility(parallelogramHighlight, step.showParallelogram);
       helpers.setVisibility(sumLabel, step.showParallelogram);
+      helpers.setVisibility(topLabelOriginal, !step.showParallelogram);
+      helpers.setVisibility(topLabelCopy, step.showCopy && !step.showParallelogram);
       helpers.setVisibility(heightLine, step.showHeight);
       helpers.setVisibility(heightLabel, step.showHeight);
       helpers.setVisibility(cutTriangle, step.showCutTriangle);
