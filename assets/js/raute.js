@@ -121,28 +121,33 @@ function hideAllAnimationHelpers(helpers) {
   helpers.setVisibility(baseLabel, false);
 }
 
-function activateDiagonalMethod(helpers) {
+function showBlock(element, visible) {
+  element.classList.toggle("hidden", !visible);
+  element.style.display = visible ? "" : "none";
+}
+
+function activateDiagonalMethod() {
   methodHeading.textContent = "Weg 1: Diagonalen e und f";
   methodIntro.textContent = "Wenn die beiden Diagonalen bekannt sind, kannst du die Fläche mit A = e · f : 2 berechnen.";
   sketchIntro.textContent = "Links siehst du die Diagonalen der Raute. Rechts kannst du e und f eingeben.";
   formulaBox.textContent = "A = e · f : 2";
 
-  helpers.setVisibility(diagonalSketch, true);
-  helpers.setVisibility(baseHeightSketch, false);
-  helpers.setVisibility(diagonalInputs, true);
-  helpers.setVisibility(baseHeightInputs, false);
+  showBlock(diagonalSketch, true);
+  showBlock(baseHeightSketch, false);
+  showBlock(diagonalInputs, true);
+  showBlock(baseHeightInputs, false);
 }
 
-function activateBaseHeightMethod(helpers) {
+function activateBaseHeightMethod() {
   methodHeading.textContent = "Weg 2: Grundseite · Höhe";
   methodIntro.textContent = "Wenn eine Seite und die zugehörige Höhe bekannt sind, kannst du die Raute wie ein Parallelogramm berechnen.";
   sketchIntro.textContent = "Links siehst du Grundseite und Höhe. Rechts kannst du a und hₐ eingeben.";
   formulaBox.textContent = "A = a · hₐ";
 
-  helpers.setVisibility(diagonalSketch, false);
-  helpers.setVisibility(baseHeightSketch, true);
-  helpers.setVisibility(diagonalInputs, false);
-  helpers.setVisibility(baseHeightInputs, true);
+  showBlock(diagonalSketch, false);
+  showBlock(baseHeightSketch, true);
+  showBlock(diagonalInputs, false);
+  showBlock(baseHeightInputs, true);
 }
 
 AreaPageCore.initAreaPage({
