@@ -34,7 +34,7 @@ const kiteSteps = [
   },
   {
     title: "Schritt 2",
-    description: "Wir zeichnen die Diagonalen ein. Sie heißen e und f und stehen beim Drachenviereck senkrecht aufeinander.",
+    description: "Wir zeichnen die Diagonalen ein. Die senkrechte Diagonale heißt e, die waagerechte Diagonale heißt f.",
     showDiagonals: true,
     showInnerTriangles: false,
     showRectangle: false,
@@ -52,7 +52,7 @@ const kiteSteps = [
   },
   {
     title: "Schritt 4",
-    description: "Wir zeichnen ein Rechteck um das Drachenviereck. Seine Seitenlängen entsprechen den Diagonalen e und f.",
+    description: "Wir zeichnen ein Rechteck um das Drachenviereck. Die waagerechte Seite entspricht f, die senkrechte Seite entspricht e.",
     showDiagonals: true,
     showInnerTriangles: false,
     showRectangle: true,
@@ -61,7 +61,7 @@ const kiteSteps = [
   },
   {
     title: "Schritt 5",
-    description: "Die schraffierten Zwischenräume sind genauso groß wie das Drachenviereck. Es ist also die Hälfte des Rechtecks e · f.",
+    description: "Die schraffierten Zwischenräume sind genauso groß wie das Drachenviereck. Der Flächeninhalt des Drachenvierecks ist also halb so groß wie der Flächeninhalt des Rechtecks e · f.\nA = e · f / 2",
     showDiagonals: true,
     showInnerTriangles: false,
     showRectangle: true,
@@ -96,7 +96,7 @@ AreaPageCore.initAreaPage({
   animation: {
     steps: kiteSteps,
     renderStep(step, helpers) {
-      kiteShape.setAttribute("points", "380,35 610,150 380,325 150,150");
+      kiteShape.setAttribute("points", "380,70 680,180 380,290 80,180");
       hideAllAnimationHelpers(helpers);
 
       helpers.setVisibility(diagonalE, step.showDiagonals);
