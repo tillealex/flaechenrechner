@@ -5,7 +5,7 @@
  * Created and developed with support from ChatGPT.
  */
 
-const steps = [
+const parallelogrammSteps = [
   {
     title: "Schritt 1",
     description: "Wir betrachten zunächst das Parallelogramm. Es hat eine Grundseite g und eine zugehörige Höhe h.",
@@ -48,8 +48,6 @@ const steps = [
   }
 ];
 
-let currentStep = 0;
-
 const mainShape = document.getElementById("mainShape");
 const cutTriangle = document.getElementById("cutTriangle");
 const movedTriangle = document.getElementById("movedTriangle");
@@ -57,73 +55,34 @@ const heightLine = document.getElementById("heightLine");
 const heightMarkerTop = document.getElementById("heightMarkerTop");
 const heightLabel = document.getElementById("heightLabel");
 
-const stepTitle = document.getElementById("stepTitle");
-const stepDescription = document.getElementById("stepDescription");
+AreaPageCore.initAreaPage({
+  animation: {
+    steps: parallelogrammSteps,
+    renderStep(step, helpers) {
+      mainShape.setAttribute("points", step.mainPoints);
 
-const nextStepButton = document.getElementById("nextStep");
-const prevStepButton = document.getElementById("prevStep");
-const resetAnimationButton = document.getElementById("resetAnimation");
-
-function setVisibility(element, visible) {
-  element.classList.toggle("hidden", !visible);
-}
-
-function updateAnimation() {
-  const step = steps[currentStep];
-
-  mainShape.setAttribute("points", step.mainPoints);
-
-  stepTitle.textContent = step.title;
-  stepDescription.textContent = step.description;
-
-  setVisibility(cutTriangle, step.showCut);
-  setVisibility(movedTriangle, step.showMoved);
-  setVisibility(heightLine, step.showHeight);
-  setVisibility(heightMarkerTop, step.showHeight);
-  setVisibility(heightLabel, step.showHeight);
-}
-
-nextStepButton.addEventListener("click", () => {
-  currentStep = Math.min(currentStep + 1, steps.length - 1);
-  updateAnimation();
-});
-
-prevStepButton.addEventListener("click", () => {
-  currentStep = Math.max(currentStep - 1, 0);
-  updateAnimation();
-});
-
-resetAnimationButton.addEventListener("click", () => {
-  currentStep = 0;
-  updateAnimation();
-});
-
-function formatNumber(value) {
-  return Number.isInteger(value) ? String(value) : value.toFixed(2).replace(".", ",");
-}
-
-function calculateArea(event) {
-  event.preventDefault();
-
-  const g = Number(document.getElementById("grundseite").value);
-  const h = Number(document.getElementById("hoehe").value);
-  const result = document.getElementById("result");
-
-  if (!Number.isFinite(g) || !Number.isFinite(h) || g <= 0 || h <= 0) {
-    result.innerHTML = "Bitte gib für Grundseite und Höhe positive Zahlen ein.";
-    return;
+      helpers.setVisibility(cutTriangle, step.showCut);
+      helpers.setVisibility(movedTriangle, step.showMoved);
+      helpers.setVisibility(heightLine, step.showHeight);
+      helpers.setVisibility(heightMarkerTop, step.showHeight);
+      helpers.setVisibility(heightLabel, step.showHeight);
+    }
+  },
+  calculation: {
+    inputs: [
+      { id: "grundseite", key: "g" },
+      { id: "hoehe", key: "h" }
+    ],
+    errorMessage: "Bitte gib für Grundseite und Höhe positive Zahlen ein.",
+    calculate(values) {
+      return values.g * values.h;
+    },
+    renderResult(values, area, helpers) {
+      return `
+        A = g · h<br>
+        A = ${helpers.formatNumber(values.g)} cm · ${helpers.formatNumber(values.h)} cm<br>
+        <strong>A = ${helpers.formatNumber(area)} cm²</strong>
+      `;
+    }
   }
-
-  const area = g * h;
-
-  result.innerHTML = `
-    A = g · h<br>
-    A = ${formatNumber(g)} cm · ${formatNumber(h)} cm<br>
-    <strong>A = ${formatNumber(area)} cm²</strong>
-  `;
-}
-
-document.getElementById("calcForm").addEventListener("submit", calculateArea);
-
-updateAnimation();
-document.getElementById("calcForm").dispatchEvent(new Event("submit"));
+});
