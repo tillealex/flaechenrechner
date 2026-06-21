@@ -1,0 +1,60 @@
+# CHANGELOG.md
+
+Alle wichtigen Änderungen an diesem Projekt werden in dieser Datei dokumentiert.
+
+Dieses Projekt steht unter der **GNU General Public License v3.0**. Siehe `LICENSE`.
+
+Dieses Projekt wurde mit Unterstützung von ChatGPT erstellt und weiterentwickelt.
+
+Das Format orientiert sich an einer einfachen, schulprojektfreundlichen Form von „Keep a Changelog".
+
+---
+
+## Unreleased
+
+### Added
+
+- `PROJECT_CONTEXT.md` als Projektgedächtnis für WILFRIED ergänzt.
+- `ARCHITECTURE.md` zur Beschreibung der technischen Struktur ergänzt.
+- `.gitignore` für lokale System-, Editor- und temporäre Dateien ergänzt.
+
+### Planned
+
+- Weitere Flächenseiten ergänzen.
+- Mögliche nächste Figuren: Raute, Trapez, Dreieck, Drachenviereck.
+- Interaktive Pfeile im Haus der Vierecke ergänzen.
+- Perspektivisch zwischen Verstehensmodus und Rechenmodus unterscheiden.
+- Lizenzhinweise in allen Dateien systematisch überprüfen.
+- Prüfen, ob CSS und JavaScript aus `vierecke/index.html` ausgelagert werden sollten.
+
+---
+
+## 0.1.0 - Projektgrundlage
+
+### Added
+
+- Startseite des Projekts angelegt.
+- Bereich „Vierecke" angelegt.
+- Haus der Vierecke als visuelle Übersicht erstellt.
+- Flächenseite für das Quadrat erstellt.
+- Flächenseite für das Rechteck erstellt.
+- Flächenseite für das Parallelogramm erstellt.
+- Zentrale CSS-Datei unter `assets/css/style.css` eingeführt.
+- Eigene JavaScript-Dateien für die Flächenanimationen angelegt:
+  - `assets/js/quadrat.js`,
+  - `assets/js/rechteck.js`,
+  - `assets/js/parallelogramm.js`.
+- README.md mit Projektziel, Struktur, Bedienung, Technik und Lizenzhinweis erstellt.
+- GNU GPL v3.0 als Lizenz ergänzt.
+
+### Design
+
+- Einheitliches Layout für Flächenberechnungsseiten eingeführt.
+- Obere Box „Idee der Berechnung" mit Animation und Schrittbeschreibung verwendet.
+- Untere Box mit „Skizze der Fläche" und „Berechnung" verwendet.
+- Animation und Erklärung räumlich getrennt, damit die Darstellung ruhiger wirkt.
+
+### Notes
+
+- Der Fokus des Projekts liegt auf dem Verständnis der Flächenformeln.
+- Die Rechenfunktion ist ergänzend gedacht und nicht Hauptzweck des Projekts.
