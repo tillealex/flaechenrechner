@@ -116,20 +116,20 @@ const figuren = {
   },
   "trapez": {
     name: "Trapez",
-    status: "info",
-    badge: "Eigenschaften",
+    status: "live",
+    badge: "Fläche aktiv",
     icon: '<polygon points="24,18 56,18 64,44 16,44"></polygon>',
     link: "trapez.html",
     kurz: [
       "mindestens ein Paar paralleler Seiten",
       "Grundseiten heißen oft a und c",
-      "Höhe steht senkrecht auf den parallelen Seiten"
+      "Fläche: A = (a + c) · h : 2"
     ],
     details: [
       "Mindestens ein Paar gegenüberliegender Seiten ist parallel.",
       "Die parallelen Seiten nennt man häufig Grundseiten.",
       "Die Höhe steht senkrecht auf den parallelen Seiten.",
-      "Spezialfälle sind zum Beispiel das gleichschenklige Trapez und das Parallelogramm."
+      "Die Fläche berechnet man mit A = (a + c) · h : 2."
     ]
   },
   "allgemein": {
