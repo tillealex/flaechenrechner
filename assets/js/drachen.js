@@ -21,7 +21,6 @@ const outerTriangleTopRight = document.getElementById("outerTriangleTopRight");
 const outerTriangleBottomRight = document.getElementById("outerTriangleBottomRight");
 const outerTriangleBottomLeft = document.getElementById("outerTriangleBottomLeft");
 const diagonalRectangle = document.getElementById("diagonalRectangle");
-const halfLabel = document.getElementById("halfLabel");
 
 const kiteSteps = [
   {
@@ -31,8 +30,7 @@ const kiteSteps = [
     showInnerTriangles: false,
     showRectangle: false,
     showRectangleLabels: false,
-    showOuterTriangles: false,
-    showHalfLabel: false
+    showOuterTriangles: false
   },
   {
     title: "Schritt 2",
@@ -41,8 +39,7 @@ const kiteSteps = [
     showInnerTriangles: false,
     showRectangle: false,
     showRectangleLabels: false,
-    showOuterTriangles: false,
-    showHalfLabel: false
+    showOuterTriangles: false
   },
   {
     title: "Schritt 3",
@@ -51,8 +48,7 @@ const kiteSteps = [
     showInnerTriangles: true,
     showRectangle: false,
     showRectangleLabels: false,
-    showOuterTriangles: false,
-    showHalfLabel: false
+    showOuterTriangles: false
   },
   {
     title: "Schritt 4",
@@ -61,8 +57,7 @@ const kiteSteps = [
     showInnerTriangles: false,
     showRectangle: true,
     showRectangleLabels: true,
-    showOuterTriangles: true,
-    showHalfLabel: false
+    showOuterTriangles: true
   },
   {
     title: "Schritt 5",
@@ -71,8 +66,7 @@ const kiteSteps = [
     showInnerTriangles: false,
     showRectangle: true,
     showRectangleLabels: true,
-    showOuterTriangles: true,
-    showHalfLabel: true
+    showOuterTriangles: true
   }
 ];
 
@@ -92,7 +86,6 @@ function hideAllAnimationHelpers(helpers) {
   helpers.setVisibility(outerTriangleBottomRight, false);
   helpers.setVisibility(outerTriangleBottomLeft, false);
   helpers.setVisibility(diagonalRectangle, false);
-  helpers.setVisibility(halfLabel, false);
 }
 
 function setGroupVisibility(elements, visible, helpers) {
@@ -103,7 +96,7 @@ AreaPageCore.initAreaPage({
   animation: {
     steps: kiteSteps,
     renderStep(step, helpers) {
-      kiteShape.setAttribute("points", "380,45 560,180 380,310 200,180");
+      kiteShape.setAttribute("points", "380,35 610,150 380,325 150,150");
       hideAllAnimationHelpers(helpers);
 
       helpers.setVisibility(diagonalE, step.showDiagonals);
@@ -113,7 +106,6 @@ AreaPageCore.initAreaPage({
       helpers.setVisibility(diagonalRectangle, step.showRectangle);
       helpers.setVisibility(rectangleELabel, step.showRectangleLabels);
       helpers.setVisibility(rectangleFLabel, step.showRectangleLabels);
-      helpers.setVisibility(halfLabel, step.showHalfLabel);
 
       setGroupVisibility(
         [triangleTop, triangleRight, triangleBottom, triangleLeft],
